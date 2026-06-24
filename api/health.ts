@@ -14,6 +14,7 @@ import { isAdminConfigured, isAuthenticated } from './_lib/auth.js';
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const health: {
     ok: boolean;
+    commit?: string;
     firebaseConfigured: boolean;
     adminConfigured: boolean;
     firestore: 'ok' | 'error' | 'skipped';
@@ -22,6 +23,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     privateKey?: Record<string, unknown>;
   } = {
     ok: true,
+    commit: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7),
     firebaseConfigured: isFirebaseConfigured(),
     adminConfigured: isAdminConfigured(),
     firestore: 'skipped',
