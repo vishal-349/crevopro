@@ -1,25 +1,48 @@
 import { useRef, useState } from 'react';
-import type { ChangeEvent, CSSProperties, FormEvent } from 'react';
+import type { ChangeEvent, CSSProperties, FocusEvent, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 
 import astronautImage from '@/assets/contactImage.svg';
 import { submitLead } from '@/lib/api';
 
-interface ContactFormData {
-  fullName: string;
-  brandName: string;
-  email: string;
-  contactNumber: string;
-  query: string;
-}
+type FieldName = 'fullName' | 'brandName' | 'email' | 'contactNumber' | 'query';
+type ContactFormData = Record<FieldName, string>;
+type Errors = Partial<Record<FieldName, string>>;
 
 const initialFormData: ContactFormData = {
   fullName: '',
   brandName: '',
   email: '',
-  contactNumber: '',
+  contactNumber: '+91 ',
   query: '',
 };
+
+const FIELDS: { name: FieldName; type: string; label: string }[] = [
+  { name: 'fullName', type: 'text', label: 'Full Name' },
+  { name: 'brandName', type: 'text', label: 'Brand Name' },
+  { name: 'email', type: 'email', label: 'Email' },
+  { name: 'contactNumber', type: 'tel', label: 'Contact Number' },
+  { name: 'query', type: 'text', label: 'FAQ query' },
+];
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[+\d][\d\s\-()]{6,19}$/;
+
+function validateField(name: FieldName, value: string): string {
+  const v = value.trim();
+  switch (name) {
+    case 'fullName':
+      return v.length >= 2 ? '' : 'Please enter your name.';
+    case 'brandName':
+      return v.length >= 1 ? '' : 'Please enter your brand name.';
+    case 'email':
+      return EMAIL_RE.test(v) ? '' : 'Please enter a valid email address.';
+    case 'contactNumber':
+      return PHONE_RE.test(v) ? '' : 'Please enter a valid phone number.';
+    case 'query':
+      return v.length >= 1 ? '' : 'Please enter your query.';
+  }
+}
 
 type SubmitState =
   | { status: 'idle' }
@@ -38,18 +61,50 @@ const honeypotStyle: CSSProperties = {
 
 export default function ContactSection() {
   const [formData, setFormData] = useState<ContactFormData>(initialFormData);
+  const [errors, setErrors] = useState<Errors>({});
   const [honeypot, setHoneypot] = useState('');
   const [submitState, setSubmitState] = useState<SubmitState>({ status: 'idle' });
   const formLoadedAt = useRef<number>(Date.now());
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const name = event.target.name as FieldName;
+    const { value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear the error the moment the field becomes valid.
+    setErrors((prev) => {
+      if (!prev[name]) return prev;
+      if (validateField(name, value)) return prev;
+      const next = { ...prev };
+      delete next[name];
+      return next;
+    });
+  };
+
+  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+    const name = event.target.name as FieldName;
+    const message = validateField(name, event.target.value);
+    setErrors((prev) => {
+      const next = { ...prev };
+      if (message) next[name] = message;
+      else delete next[name];
+      return next;
+    });
+  };
+
+  const validateAll = (): boolean => {
+    const next: Errors = {};
+    for (const { name } of FIELDS) {
+      const message = validateField(name, formData[name]);
+      if (message) next[name] = message;
+    }
+    setErrors(next);
+    return Object.keys(next).length === 0;
   };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (submitState.status === 'submitting') return;
+    if (!validateAll()) return;
 
     setSubmitState({ status: 'submitting' });
     try {
@@ -65,6 +120,7 @@ export default function ContactSection() {
       });
       setSubmitState({ status: 'success' });
       setFormData(initialFormData);
+      setErrors({});
     } catch (error) {
       setSubmitState({
         status: 'error',
@@ -113,60 +169,28 @@ export default function ContactSection() {
             <h2 className="collaborate-title">Let's Collaborate</h2>
 
             <form className="contact-form" onSubmit={handleSubmit} noValidate>
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="fullName"
-                  placeholder="Full Name"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="brandName"
-                  placeholder="Brand Name"
-                  value={formData.brandName}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="tel"
-                  name="contactNumber"
-                  placeholder="Contact Number"
-                  value={formData.contactNumber}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-
-              <div className="form-group">
-                <input
-                  type="text"
-                  name="query"
-                  placeholder="FAQ query"
-                  value={formData.query}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
+              {FIELDS.map(({ name, type, label }) => (
+                <div className="form-group" key={name}>
+                  <input
+                    id={`contact-${name}`}
+                    name={name}
+                    type={type}
+                    placeholder=" "
+                    value={formData[name]}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors[name] ? 'has-error' : ''}
+                    aria-invalid={errors[name] ? true : undefined}
+                    aria-describedby={errors[name] ? `${name}-error` : undefined}
+                  />
+                  <label htmlFor={`contact-${name}`}>{label}</label>
+                  {errors[name] && (
+                    <span id={`${name}-error`} className="field-error" role="alert">
+                      {errors[name]}
+                    </span>
+                  )}
+                </div>
+              ))}
 
               {/* Honeypot: hidden from users, attractive to bots. */}
               <input

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { FormEvent } from 'react';
+import type { FormEvent, MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 
 import logo from '@/assets/logo.svg';
@@ -23,15 +23,72 @@ const itemVariants = {
   visible: { opacity: 1, y: 0 },
 };
 
+// Maps a search term to the page section it should jump to (single-page site).
+const SEARCH_INDEX: { id: string; keywords: string[] }[] = [
+  { id: 'about', keywords: ['about', 'team', 'who', 'agency', 'company'] },
+  {
+    id: 'services',
+    keywords: [
+      'service',
+      'services',
+      'graphic',
+      'design',
+      'marketing',
+      'digital',
+      'web',
+      'website',
+      'ecommerce',
+      'e-commerce',
+      'commerce',
+      'seo',
+    ],
+  },
+  {
+    id: 'portfolio',
+    keywords: ['portfolio', 'work', 'works', 'project', 'projects', 'logo', 'banner', 'catalogue', 'catalog', 'poster'],
+  },
+  { id: 'why', keywords: ['why', 'stats', 'years', 'clients', 'experience'] },
+  { id: 'testimonials', keywords: ['testimonial', 'testimonials', 'feedback', 'review', 'reviews'] },
+  { id: 'blog', keywords: ['blog', 'blogs', 'article', 'articles', 'insight', 'insights'] },
+  {
+    id: 'contact',
+    keywords: ['contact', 'appointment', 'book', 'collaborate', 'enquiry', 'inquiry', 'quote', 'email', 'phone', 'reach', 'hire'],
+  },
+];
+
+function findSectionId(query: string): string | null {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+  for (const section of SEARCH_INDEX) {
+    if (section.id.includes(q) || section.keywords.some((k) => k.includes(q) || q.includes(k))) {
+      return section.id;
+    }
+  }
+  return null;
+}
+
 export default function Navbar() {
   const scrolled = useScrolled(50);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
+  const closeMenu = () => setMobileMenuOpen(false);
   const toggleMobileMenu = () => setMobileMenuOpen((open) => !open);
+
+  const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    closeMenu();
+  };
 
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const sectionId = findSectionId(searchValue);
+    if (sectionId) {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+      closeMenu();
+      setSearchValue('');
+    }
   };
 
   return (
@@ -43,7 +100,7 @@ export default function Navbar() {
     >
       <div className="navbar-container">
         <motion.div className="navbar-logo" variants={itemVariants}>
-          <a href="#home">
+          <a href="#home" onClick={scrollToTop} aria-label="CrevoPro — back to top">
             <img src={logo} alt="CrevoPro" />
           </a>
         </motion.div>
@@ -52,7 +109,11 @@ export default function Navbar() {
           <motion.ul variants={navVariants}>
             {navLinks.map((link) => (
               <motion.li key={link.href} variants={itemVariants}>
-                <a href={link.href} className={link.isButton ? 'contact-btn' : undefined}>
+                <a
+                  href={link.href}
+                  className={link.isButton ? 'contact-btn' : undefined}
+                  onClick={closeMenu}
+                >
                   {link.label}
                 </a>
               </motion.li>
@@ -61,11 +122,7 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-search">
-          <motion.form
-            onSubmit={handleSearchSubmit}
-            className="search-form"
-            variants={itemVariants}
-          >
+          <motion.form onSubmit={handleSearchSubmit} className="search-form" variants={itemVariants}>
             <div className="search-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -79,6 +136,7 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search"
+                aria-label="Search the site"
                 value={searchValue}
                 onChange={(event) => setSearchValue(event.target.value)}
               />

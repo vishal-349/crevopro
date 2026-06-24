@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 
-import { adminLogin } from '@/lib/api';
+import { adminLogin, getSession } from '@/lib/api';
 import logo from '@/assets/logo.svg';
 
 interface LoginFormProps {
-  configured: boolean;
   onSuccess: () => void;
 }
 
-export default function LoginForm({ configured, onSuccess }: LoginFormProps) {
+export default function LoginForm({ onSuccess }: LoginFormProps) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [configured, setConfigured] = useState(true);
+
+  // Light, Firebase-free check used only on the login screen (off the hot path).
+  useEffect(() => {
+    getSession()
+      .then((session) => setConfigured(session.configured))
+      .catch(() => setConfigured(true));
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

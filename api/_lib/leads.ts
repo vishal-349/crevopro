@@ -51,6 +51,15 @@ export async function updateLeadStatus(id: string, status: LeadStatus): Promise<
   return true;
 }
 
+export async function deleteLead(id: string): Promise<boolean> {
+  const db = getDb();
+  const ref = db.collection(LEADS_COLLECTION).doc(id);
+  const snap = await ref.get();
+  if (!snap.exists) return false;
+  await ref.delete();
+  return true;
+}
+
 export function leadsToCsv(leads: Lead[]): string {
   const headers = [
     'Created',

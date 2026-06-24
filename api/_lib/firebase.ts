@@ -99,8 +99,13 @@ function initApp(): App {
 
 export function getDb(): Firestore {
   if (cachedDb) return cachedDb;
-  cachedDb = getFirestore(initApp());
-  return cachedDb;
+  const db = getFirestore(initApp());
+  // Use the REST transport instead of gRPC: it avoids the gRPC channel
+  // handshake on cold serverless invocations, materially cutting first-request
+  // latency. Must be set once, before the first Firestore operation.
+  db.settings({ preferRest: true });
+  cachedDb = db;
+  return db;
 }
 
 export const LEADS_COLLECTION = 'leads';

@@ -279,3 +279,23 @@
     color: $text-muted;
   }
 }
+
+/* ---- Delete action ---- */
+.admin-delete {
+  padding: 0.35rem 0.7rem;
+  border-radius: $radius-sm;
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  background: transparent;
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background: #ff6b6b;
+    color: $secondary-color;
+  }
+}

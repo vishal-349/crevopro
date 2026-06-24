@@ -65,5 +65,9 @@ export function updateLeadStatus(id: string, status: LeadStatus): Promise<{ ok: 
   });
 }
 
+export function deleteLead(id: string): Promise<{ ok: true }> {
+  return request(`/api/leads/${encodeURIComponent(id)}`, { method: 'DELETE' });
+}
+
 /** URL the browser can navigate to for a CSV download (sends the auth cookie). */
 export const LEADS_CSV_URL = '/api/leads?format=csv';

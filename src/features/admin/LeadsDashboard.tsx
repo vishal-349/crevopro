@@ -1,10 +1,17 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { adminLogout, listLeads, updateLeadStatus, LEADS_CSV_URL } from '@/lib/api';
+import {
+  adminLogout,
+  deleteLead,
+  listLeads,
+  updateLeadStatus,
+  LEADS_CSV_URL,
+} from '@/lib/api';
 import { LEAD_STATUS_LABELS, LEAD_STATUSES, type Lead, type LeadStatus } from '@/types/lead';
 
 interface LeadsDashboardProps {
   onLogout: () => void;
+  initialLeads?: Lead[];
 }
 
 type StatusFilter = 'all' | LeadStatus;
@@ -17,13 +24,14 @@ function formatDate(iso: string): string {
   return Number.isNaN(date.getTime()) ? '—' : date.toLocaleString();
 }
 
-export default function LeadsDashboard({ onLogout }: LeadsDashboardProps) {
-  const [leads, setLeads] = useState<Lead[]>([]);
-  const [loading, setLoading] = useState(true);
+export default function LeadsDashboard({ onLogout, initialLeads }: LeadsDashboardProps) {
+  const [leads, setLeads] = useState<Lead[]>(initialLeads ?? []);
+  const [loading, setLoading] = useState(initialLeads === undefined);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
+  const hasInitialData = useRef(initialLeads !== undefined);
 
   const load = useCallback(async (showSpinner = false) => {
     if (showSpinner) setLoading(true);
@@ -39,7 +47,8 @@ export default function LeadsDashboard({ onLogout }: LeadsDashboardProps) {
   }, []);
 
   useEffect(() => {
-    void load(true);
+    // Skip the initial fetch when the parent already handed us the leads.
+    if (!hasInitialData.current) void load(true);
     const timer = setInterval(() => void load(false), REFRESH_INTERVAL_MS);
     return () => clearInterval(timer);
   }, [load]);
@@ -50,8 +59,20 @@ export default function LeadsDashboard({ onLogout }: LeadsDashboardProps) {
     try {
       await updateLeadStatus(id, status);
     } catch {
-      setLeads(previous); // revert on failure
+      setLeads(previous);
       setError('Could not update lead status. Please retry.');
+    }
+  };
+
+  const handleDelete = async (lead: Lead) => {
+    if (!window.confirm(`Delete the lead from "${lead.name}"? This cannot be undone.`)) return;
+    const previous = leads;
+    setLeads((current) => current.filter((l) => l.id !== lead.id));
+    try {
+      await deleteLead(lead.id);
+    } catch {
+      setLeads(previous);
+      setError('Could not delete the lead. Please retry.');
     }
   };
 
@@ -161,18 +182,19 @@ export default function LeadsDashboard({ onLogout }: LeadsDashboardProps) {
               <th>Message</th>
               <th>Source</th>
               <th>Status</th>
+              <th aria-label="Actions"></th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={9} className="admin-table__empty">
+                <td colSpan={10} className="admin-table__empty">
                   Loading leads…
                 </td>
               </tr>
             ) : visibleLeads.length === 0 ? (
               <tr>
-                <td colSpan={9} className="admin-table__empty">
+                <td colSpan={10} className="admin-table__empty">
                   No leads found.
                 </td>
               </tr>
@@ -205,6 +227,16 @@ export default function LeadsDashboard({ onLogout }: LeadsDashboardProps) {
                         </option>
                       ))}
                     </select>
+                  </td>
+                  <td>
+                    <button
+                      className="admin-delete"
+                      title="Delete lead"
+                      aria-label={`Delete lead from ${lead.name}`}
+                      onClick={() => void handleDelete(lead)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))

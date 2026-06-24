@@ -1,7 +1,58 @@
-// Additive styles for new form affordances (inline submit feedback + disabled
-// state). These selectors did not exist before, so they do not alter any
-// existing rendering.
+// Additive styles for new form affordances: floating labels, inline field
+// errors, and the disabled submit state. These selectors did not exist before,
+// so they augment (rather than alter) the original contact-form rendering.
 @use '../abstracts/variables' as *;
+
+.contact-form .form-group {
+  position: relative;
+}
+
+// Make room at the top of each input for the floating label.
+.contact-form .form-group input {
+  padding: 1.45rem 1rem 0.55rem;
+}
+
+.contact-form .form-group label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: $text-muted;
+  font-size: 1rem;
+  pointer-events: none;
+  transition:
+    top 0.16s ease,
+    font-size 0.16s ease,
+    color 0.16s ease;
+}
+
+// Float the label up when the field is focused or filled.
+.contact-form .form-group input:focus + label,
+.contact-form .form-group input:not(:placeholder-shown) + label {
+  top: 0.4rem;
+  font-size: 0.7rem;
+  color: $primary-color;
+}
+
+.contact-form .form-group input.has-error {
+  border-color: #ff6b6b;
+}
+
+.contact-form .form-group input.has-error:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2);
+}
+
+.contact-form .form-group input.has-error + label {
+  color: #ff6b6b;
+}
+
+.contact-form .field-error {
+  display: block;
+  margin-top: 0.35rem;
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
 
 .contact-form .submit-button:disabled {
   opacity: 0.7;
