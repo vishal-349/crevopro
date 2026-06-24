@@ -45,7 +45,7 @@
   transition: color 0.3s ease;
 }
 .navbar-menu ul li a:hover {
-  background: linear-gradient(45deg, #FF6FD8, #A78BFA);
+  background: linear-gradient(45deg, #05FB8D, #03AFAD);
 }
 .navbar-menu ul li a::after {
   content: "";
@@ -54,21 +54,21 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(45deg, #FF6FD8, #A78BFA);
+  background: linear-gradient(45deg, #05FB8D, #03AFAD);
   transition: width 0.3s ease;
 }
 .navbar-menu ul li a:hover::after {
   width: 100%;
 }
 .navbar-menu ul li a.contact-btn {
-  background: linear-gradient(45deg, #FF6FD8, #A78BFA);
+  background: linear-gradient(45deg, #05FB8D, #03AFAD);
   color: #000000;
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   font-weight: 600;
 }
 .navbar-menu ul li a.contact-btn:hover {
-  background: linear-gradient(45deg, #FF6FD8, #A78BFA);
+  background: linear-gradient(45deg, #05FB8D, #03AFAD);
 }
 .navbar-menu ul li a.contact-btn::after {
   display: none;
@@ -90,7 +90,7 @@
 }
 .navbar-search .search-icon svg {
   margin-right: 0.5rem;
-  color: linear-gradient(45deg, #FF6FD8, #A78BFA);
+  color: linear-gradient(45deg, #05FB8D, #03AFAD);
 }
 .navbar-search .search-icon input {
   background: transparent;

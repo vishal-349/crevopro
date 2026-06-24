@@ -2,8 +2,8 @@
 // card styling — loaded after the section partials so these win the cascade.
 @use '../abstracts/variables' as *;
 
-$svc-from: #ff6fd8;
-$svc-to: #a78bfa;
+$svc-from: #05fb8d;
+$svc-to: #03afad;
 
 // Center the grid so an odd number of cards (5) leaves a balanced last row.
 .services .services-grid {
@@ -50,14 +50,14 @@ $svc-to: #a78bfa;
     color: inherit;
     transform: translateY(-10px);
     border-color: transparent;
-    box-shadow: 0 30px 60px -24px rgba(167, 139, 250, 0.5);
+    box-shadow: 0 30px 60px -24px rgba(3, 175, 173, 0.5);
   }
 
   // Repurpose the legacy ::before overlay into an accent corner glow.
   &::before {
     background: radial-gradient(
       circle at 75% 0%,
-      rgba(167, 139, 250, 0.22),
+      rgba(3, 175, 173, 0.22),
       transparent 60%
     ) !important;
     z-index: 1 !important;
@@ -99,11 +99,11 @@ $svc-to: #a78bfa;
     place-items: center;
     background: radial-gradient(
       circle at 32% 28%,
-      rgba(255, 111, 216, 0.16),
-      rgba(167, 139, 250, 0.05)
+      rgba(5, 251, 141, 0.16),
+      rgba(3, 175, 173, 0.05)
     );
-    border: 1px solid rgba(255, 111, 216, 0.32);
-    box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.05);
+    border: 1px solid rgba(5, 251, 141, 0.32);
+    box-shadow: 0 0 0 6px rgba(3, 175, 173, 0.05);
     transition: transform 0.4s ease;
 
     img {
