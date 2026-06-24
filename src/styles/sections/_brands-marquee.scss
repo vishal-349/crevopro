@@ -1,0 +1,37 @@
+// Auto-extracted from the canonical compiled stylesheet (design source of truth).
+.brands-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 1.5rem;
+}
+.brands-marquee {
+  display: flex;
+  width: max-content;
+}
+.brands-container {
+  display: flex;
+  gap: 4rem !important;
+  align-items: center;
+}
+/* Uniform size & color for brand logos */
+.brands-container img {
+  height: 60px;                  
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1) contrast(120%) saturate(150%);
+  opacity: 0.95;                     
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.brands-container img:hover {
+  transform: scale(1.1);            
+  filter: brightness(1) invert(0) saturate(100%) !important; 
+  opacity: 1;
+}
+
+@media (max-width: 600px) {
+  .brands-container {
+    gap: 2rem !important;
+  }
+}

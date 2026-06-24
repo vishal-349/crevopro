@@ -1,0 +1,110 @@
+// Auto-extracted from the canonical compiled stylesheet (design source of truth).
+.services {
+  position: relative;
+  background-color: #000000;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+.services-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.services .service-card {
+  background-color: #232323;
+  border: 1px solid #626262;
+  border-radius: 12px;
+  padding: 2.5rem;
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+@media (min-width: 768px) {
+  .services .service-card {
+    height: 336px;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 992px) {
+  .services .service-card {
+    width: 100%;
+    max-width: 544px;
+  }
+}
+.services .service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.services .service-card:hover::before {
+  opacity: 0.05;
+}
+.services .service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #AAAAAA 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.services .service-card .service-icon {
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+}
+.services .service-card .service-icon img {
+  width: 80px;
+  height: 80px;
+}
+.services .service-card .service-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #FFFFFF;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+   background: linear-gradient(to right, #f0f0f0, #999999);
+  /* background: linear-gradient(to right, #ffffff 0%, #dddddd 25%, #bbbbbb 50%, #999999 100%); */
+}
+.services .service-card .service-description {
+  color: #999999;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 2;
+}
+.services .service-card .service-link {
+  display: flex;
+  align-items: center;
+  color: #00f7ae;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+.services .service-card .service-link span {
+  margin-right: 0.5rem;
+}

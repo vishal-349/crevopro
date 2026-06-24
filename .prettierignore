@@ -1,0 +1,12 @@
+dist
+node_modules
+.review
+package-lock.json
+src/styles/**/*.css
+src/styles/**/*.css.map
+*.svg
+
+# Legacy section styles are extracted verbatim from the original compiled
+# stylesheet (design source of truth); kept unformatted for traceability.
+src/styles/base
+src/styles/sections

@@ -1,0 +1,128 @@
+// Auto-extracted from the canonical compiled stylesheet (design source of truth).
+.contact-section {
+  background-color: #000000;
+  padding: 80px 0;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-wrapper {
+  max-width: 1050px;
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid #777777;
+  border-radius: 30px;
+}
+@media (min-width: 768px) {
+  .contact-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem 0;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+@media (min-width: 992px) {
+  .contact-title {
+    font-size: 3rem;
+  }
+}
+
+.contact-subtitle {
+  color: #cccccc;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-text {
+  color: #cccccc;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.contact-image-container {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+.contact-image-container .contact-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 300px;
+}
+@media (min-width: 992px) {
+  .contact-image-container .contact-image {
+    max-height: 350px;
+  }
+}
+
+.contact-right {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #777777;
+  border-radius: 30px;
+}
+
+.collaborate-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+.contact-form .form-group input {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.contact-form .form-group input:focus {
+  outline: none;
+  border-color: #05FB8D;
+  box-shadow: 0 0 0 2px rgba(5, 251, 141, 0.2);
+}
+.contact-form .form-group input::placeholder {
+  color: #cccccc;
+}
+.contact-form .submit-button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(to right, #05FB8D, #03AFAD);
+  color: #000000;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.contact-form .submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(5, 251, 141, 0.3);
+}
+.contact-form .submit-button:active {
+  transform: translateY(0);
+}

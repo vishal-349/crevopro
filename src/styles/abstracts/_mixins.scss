@@ -1,0 +1,63 @@
+// Reusable mixins — consumed via `@use '../abstracts/mixins' as *`.
+@use 'variables' as *;
+
+// Responsive Breakpoints
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: 576px) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $breakpoint == sm-down {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  } @else if $breakpoint == md-down {
+    @media (max-width: 767.98px) {
+      @content;
+    }
+  } @else if $breakpoint == lg-down {
+    @media (max-width: 991.98px) {
+      @content;
+    }
+  } @else if $breakpoint == xl-down {
+    @media (max-width: 1199.98px) {
+      @content;
+    }
+  }
+}
+
+// Flex Center
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Card Style
+@mixin card-style {
+  background-color: $card-bg;
+  border-radius: $radius-md;
+  box-shadow: $shadow-soft;
+  padding: $space-md;
+  border: 1px solid $border-color;
+  color: $text-light;
+}
+
+// Text Truncate
+@mixin text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

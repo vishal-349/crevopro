@@ -1,0 +1,116 @@
+// Auto-extracted from the canonical compiled stylesheet (design source of truth).
+.testimonials {
+  background-color: #000000;
+  padding: 80px 0;
+}
+.testimonials .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.testimonials .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+@media (min-width: 992px) {
+  .testimonials .section-title {
+    font-size: 3rem;
+  }
+}
+.testimonials .testimonial-slider {
+  position: relative;
+  margin-top: 3rem;
+}
+.testimonials .testimonial-card {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid #777777;
+  border-radius: 30px;
+  padding: 2rem;
+  margin: 0 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonials .testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.testimonials .testimonial-card .testimonial-content {
+  margin-bottom: 2rem;
+  font-style: italic;
+  color: #cccccc;
+  line-height: 1.6;
+}
+.testimonials .testimonial-card .testimonial-client {
+  display: flex;
+  align-items: center;
+}
+.testimonials .testimonial-card .client-logo {
+  width: 70px;
+  height: 70px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+}
+.testimonials .testimonial-card .client-logo img {
+  width: 50px;
+  height: auto;
+  filter: brightness(0);
+}
+.testimonials .testimonial-card .client-info h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+}
+.testimonials .testimonial-card .client-info p {
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+.testimonials .slick-dots {
+  bottom: -40px;
+}
+.testimonials .slick-dots li button:before {
+  color: #cccccc;
+}
+.testimonials .slick-dots li.slick-active button:before {
+  color: #00f7ae;
+}
+.testimonials .slick-prev,
+.testimonials .slick-next {
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+.testimonials .slick-prev:hover,
+.testimonials .slick-next:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+.testimonials .slick-prev:before,
+.testimonials .slick-next:before {
+  color: #ffffff;
+}
+.testimonials .slick-prev {
+  left: -20px;
+}
+@media (min-width: 768px) {
+  .testimonials .slick-prev {
+    left: -50px;
+  }
+}
+.testimonials .slick-next {
+  right: -20px;
+}
+@media (min-width: 768px) {
+  .testimonials .slick-next {
+    right: -50px;
+  }
+}
+
+/* Marquee effect for brands */
