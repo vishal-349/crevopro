@@ -33,7 +33,7 @@ export function isFirebaseConfigured(): boolean {
  *  - accidental wrapping single/double quotes — stripped
  * Any of these mangle the PEM and make `cert()` throw, so we guard against all.
  */
-function normalizePrivateKey(raw: string): string {
+export function normalizePrivateKey(raw: string): string {
   let key = raw.trim();
   if (
     (key.startsWith('"') && key.endsWith('"')) ||
@@ -42,6 +42,26 @@ function normalizePrivateKey(raw: string): string {
     key = key.slice(1, -1);
   }
   return key.replace(/\\n/g, '\n');
+}
+
+/** Safe structural description of the private key (no secret content) for diagnostics. */
+export function inspectPrivateKey(): Record<string, unknown> {
+  const raw = process.env.FIREBASE_PRIVATE_KEY;
+  if (!raw) return { present: false };
+  const normalized = normalizePrivateKey(raw);
+  return {
+    present: true,
+    rawLength: raw.length,
+    hadWrappingQuotes:
+      (raw.trim().startsWith('"') && raw.trim().endsWith('"')) ||
+      (raw.trim().startsWith("'") && raw.trim().endsWith("'")),
+    hasEscapedNewlines: raw.includes('\\n'),
+    hasRealNewlines: raw.includes('\n'),
+    normalizedLineCount: normalized.split('\n').length,
+    startsWithBeginMarker: normalized.startsWith('-----BEGIN'),
+    endsWithEndMarker: normalized.trimEnd().endsWith('-----'),
+    head: normalized.slice(0, 27),
+  };
 }
 
 function initApp(): App {
