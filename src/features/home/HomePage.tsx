@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Loader from '@/components/ui/Loader';
 
@@ -16,13 +17,39 @@ const ContactSection = lazy(() => import('@/features/contact/ContactSection'));
 
 const INTRO_LOAD_MS = 2000;
 
+// Module-scoped so the branded intro plays once per full page load, not on
+// every client-side navigation back to the home route.
+let introPlayed = false;
+
 export default function HomePage() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!introPlayed);
+  const { hash } = useLocation();
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), INTRO_LOAD_MS);
+    if (introPlayed) return;
+    const timer = setTimeout(() => {
+      introPlayed = true;
+      setLoading(false);
+    }, INTRO_LOAD_MS);
     return () => clearTimeout(timer);
   }, []);
+
+  // Scroll to a hash target (e.g. arriving at /#contact from another page),
+  // retrying briefly while lazy sections mount.
+  useEffect(() => {
+    if (loading || !hash) return;
+    const id = hash.slice(1);
+    let tries = 0;
+    const tryScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      } else if (tries++ < 20) {
+        window.setTimeout(tryScroll, 100);
+      }
+    };
+    tryScroll();
+  }, [loading, hash]);
 
   if (loading) {
     return <Loader />;

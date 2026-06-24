@@ -63,8 +63,10 @@ export function validateLead(input: LeadInput): ValidationResult {
 
   // 3. Required fields.
   if (name.length < 2) return { kind: 'invalid', error: 'Please enter your name.' };
-  if (!EMAIL_RE.test(email)) return { kind: 'invalid', error: 'Please enter a valid email address.' };
-  if (!PHONE_RE.test(phone)) return { kind: 'invalid', error: 'Please enter a valid phone number.' };
+  if (!EMAIL_RE.test(email))
+    return { kind: 'invalid', error: 'Please enter a valid email address.' };
+  if (!PHONE_RE.test(phone))
+    return { kind: 'invalid', error: 'Please enter a valid phone number.' };
 
   // 4. Length caps (anti-abuse).
   if (

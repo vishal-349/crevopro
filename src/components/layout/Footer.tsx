@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import footerLogo from '@/assets/logo3.svg';
 import { contactInfo, footerColumns, socialLinks } from '@/data/navigation';
 
@@ -25,7 +27,7 @@ export default function Footer() {
               <ul className="footer-links">
                 {column.links.map((link) => (
                   <li key={link}>
-                    <a href="#services">{link}</a>
+                    <Link to="/#services">{link}</Link>
                   </li>
                 ))}
               </ul>

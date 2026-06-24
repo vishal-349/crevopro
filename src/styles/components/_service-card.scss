@@ -1,0 +1,20 @@
+// The service cards are now links to their detail pages. Additive styling only:
+// keep the card's text colours, add a pointer, and nudge the arrow on hover.
+.services .service-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: inherit;
+  }
+
+  .service-link {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .service-link {
+    transform: translateX(10px);
+  }
+}

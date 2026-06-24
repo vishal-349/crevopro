@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import { services } from '@/data/services';
@@ -6,30 +6,24 @@ import type { Service } from '@/types/content';
 import { createStaggerContainer, fadeUpItem } from '@/lib/animations';
 
 const containerVariants = createStaggerContainer(0.2, 0.3);
+const MotionLink = motion.create(Link);
 
 function ServiceCard({ service }: { service: Service }) {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <motion.div
+    <MotionLink
+      to={`/services/${service.slug}`}
       className="service-card"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.6 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       <div className="service-icon">
         <img src={service.icon} alt={service.title} />
       </div>
       <h3 className="service-title">{service.title}</h3>
       <p className="service-description">{service.description}</p>
-      <motion.div
-        className="service-link"
-        animate={{ x: isHovered ? 10 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
+      <span className="service-link">
         <span>Learn More</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -43,8 +37,8 @@ function ServiceCard({ service }: { service: Service }) {
             d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
           />
         </svg>
-      </motion.div>
-    </motion.div>
+      </span>
+    </MotionLink>
   );
 }
 

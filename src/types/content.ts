@@ -5,11 +5,62 @@ export interface Brand {
   logo: string;
 }
 
+export interface ServiceAccent {
+  from: string;
+  to: string;
+}
+
 export interface Service {
   id: number;
+  slug: string;
   icon: string;
   title: string;
   description: string;
+  accent: ServiceAccent;
+}
+
+export interface ServiceStat {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  label: string;
+}
+
+export interface ServiceFeature {
+  title: string;
+  description: string;
+}
+
+export interface ServiceProcessStep {
+  title: string;
+  description: string;
+}
+
+export interface ServiceHighlight {
+  title: string;
+  category: string;
+}
+
+export interface ServiceFaq {
+  question: string;
+  answer: string;
+}
+
+export interface ServiceDetail {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  tagline: string;
+  heroDescription: string;
+  stats: ServiceStat[];
+  whatWeDo: ServiceFeature[];
+  process: ServiceProcessStep[];
+  benefits: ServiceFeature[];
+  highlights: ServiceHighlight[];
+  whyChooseUs: ServiceFeature[];
+  faqs: ServiceFaq[];
+  ctaHeading: string;
+  ctaText: string;
 }
 
 export type PortfolioCategory =

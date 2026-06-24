@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent, MouseEvent } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import logo from '@/assets/logo.svg';
@@ -45,14 +46,40 @@ const SEARCH_INDEX: { id: string; keywords: string[] }[] = [
   },
   {
     id: 'portfolio',
-    keywords: ['portfolio', 'work', 'works', 'project', 'projects', 'logo', 'banner', 'catalogue', 'catalog', 'poster'],
+    keywords: [
+      'portfolio',
+      'work',
+      'works',
+      'project',
+      'projects',
+      'logo',
+      'banner',
+      'catalogue',
+      'catalog',
+      'poster',
+    ],
   },
   { id: 'why', keywords: ['why', 'stats', 'years', 'clients', 'experience'] },
-  { id: 'testimonials', keywords: ['testimonial', 'testimonials', 'feedback', 'review', 'reviews'] },
+  {
+    id: 'testimonials',
+    keywords: ['testimonial', 'testimonials', 'feedback', 'review', 'reviews'],
+  },
   { id: 'blog', keywords: ['blog', 'blogs', 'article', 'articles', 'insight', 'insights'] },
   {
     id: 'contact',
-    keywords: ['contact', 'appointment', 'book', 'collaborate', 'enquiry', 'inquiry', 'quote', 'email', 'phone', 'reach', 'hire'],
+    keywords: [
+      'contact',
+      'appointment',
+      'book',
+      'collaborate',
+      'enquiry',
+      'inquiry',
+      'quote',
+      'email',
+      'phone',
+      'reach',
+      'hire',
+    ],
   },
 ];
 
@@ -71,22 +98,44 @@ export default function Navbar() {
   const scrolled = useScrolled(50);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const onHome = pathname === '/';
 
   const closeMenu = () => setMobileMenuOpen(false);
   const toggleMobileMenu = () => setMobileMenuOpen((open) => !open);
 
-  const scrollToTop = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Scroll to a section if on the home page; otherwise route home with the hash
+  // (HomePage scrolls to it once its sections have mounted).
+  const goToSection = (id: string) => {
+    if (onHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate({ pathname: '/', hash: `#${id}` });
+    }
     closeMenu();
+  };
+
+  const handleLogo = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    if (onHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+    closeMenu();
+  };
+
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault();
+    goToSection(href.replace('#', ''));
   };
 
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const sectionId = findSectionId(searchValue);
     if (sectionId) {
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
-      closeMenu();
+      goToSection(sectionId);
       setSearchValue('');
     }
   };
@@ -100,7 +149,7 @@ export default function Navbar() {
     >
       <div className="navbar-container">
         <motion.div className="navbar-logo" variants={itemVariants}>
-          <a href="#home" onClick={scrollToTop} aria-label="CrevoPro — back to top">
+          <a href="/" onClick={handleLogo} aria-label="CrevoPro — back to home">
             <img src={logo} alt="CrevoPro" />
           </a>
         </motion.div>
@@ -110,9 +159,9 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <motion.li key={link.href} variants={itemVariants}>
                 <a
-                  href={link.href}
+                  href={onHome ? link.href : `/${link.href}`}
                   className={link.isButton ? 'contact-btn' : undefined}
-                  onClick={closeMenu}
+                  onClick={(event) => handleNavClick(event, link.href)}
                 >
                   {link.label}
                 </a>
@@ -122,7 +171,11 @@ export default function Navbar() {
         </div>
 
         <div className="navbar-search">
-          <motion.form onSubmit={handleSearchSubmit} className="search-form" variants={itemVariants}>
+          <motion.form
+            onSubmit={handleSearchSubmit}
+            className="search-form"
+            variants={itemVariants}
+          >
             <div className="search-icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

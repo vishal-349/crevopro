@@ -36,3 +36,24 @@
 
 // Additive component styles (new selectors only — no legacy overrides).
 @use 'components/forms';
+@use 'components/service-card';
+
+// Lightweight route transition (opacity only — safe for fixed elements).
+.route-fade {
+  animation: route-fade-in 0.35s ease both;
+}
+
+@keyframes route-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-fade {
+    animation: none;
+  }
+}
