@@ -79,6 +79,16 @@ function initApp(): App {
     throw new FirebaseNotConfiguredError(missing);
   }
 
+  // Catch the most common misconfiguration with an actionable message: the
+  // value must be the `private_key` PEM block, not `private_key_id`.
+  if (privateKey && !privateKey.includes('-----BEGIN')) {
+    throw new Error(
+      "FIREBASE_PRIVATE_KEY is not a valid PEM. Copy the 'private_key' field from the " +
+        "service-account JSON (the long '-----BEGIN PRIVATE KEY-----…-----END PRIVATE KEY-----' " +
+        "block) — not 'private_key_id'.",
+    );
+  }
+
   const existing = getApps()[0];
   if (existing) return existing;
 
