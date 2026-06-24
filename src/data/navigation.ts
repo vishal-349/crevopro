@@ -60,12 +60,14 @@ export const footerColumns: FooterColumn[] = [
 ];
 
 export interface ContactInfo {
+  mobile: string;
   address: string;
   phone: string;
   email: string;
 }
 
 export const contactInfo: ContactInfo = {
+  mobile: '+91 90845 95118',
   address: 'Dehradun, Uttarakhand, India',
   phone: '+91 703 7792 988',
   email: 'infocrevopro@gmail.com',
@@ -78,8 +80,8 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576661860797' },
-  { label: 'Twitter', href: 'https://x.com/CrevoPro' },
   { label: 'WhatsApp', href: 'https://wa.me/917037792988' },
   { label: 'Instagram', href: 'https://www.instagram.com/crevopro/' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crevo-pro-a216ab368/' },
+  { label: 'Pinterest', href: 'https://www.pinterest.com/crevopro/' },
 ];

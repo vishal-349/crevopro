@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 const gradientTextStyle: CSSProperties = {
   fontSize: '1.5rem',
   fontWeight: 600,
-  background: 'linear-gradient(45deg, #05FB8D, #03AFAD)',
+  background: 'linear-gradient(45deg, #FF6FD8, #A78BFA)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
   backgroundClip: 'text',
