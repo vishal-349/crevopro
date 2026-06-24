@@ -26,11 +26,30 @@ export function isFirebaseConfigured(): boolean {
   );
 }
 
+/**
+ * Normalise the service-account private key across the formats it can arrive in:
+ *  - real multi-line value (Vercel dashboard paste) — used as-is
+ *  - escaped `\n` newlines (CLI / single-line env) — un-escaped
+ *  - accidental wrapping single/double quotes — stripped
+ * Any of these mangle the PEM and make `cert()` throw, so we guard against all.
+ */
+function normalizePrivateKey(raw: string): string {
+  let key = raw.trim();
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1);
+  }
+  return key.replace(/\\n/g, '\n');
+}
+
 function initApp(): App {
   const projectId = process.env.FIREBASE_PROJECT_ID;
   const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-  // Vercel stores multi-line keys with escaped newlines; restore them.
-  const privateKey = process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const privateKey = process.env.FIREBASE_PRIVATE_KEY
+    ? normalizePrivateKey(process.env.FIREBASE_PRIVATE_KEY)
+    : undefined;
 
   const missing: string[] = [];
   if (!projectId) missing.push('FIREBASE_PROJECT_ID');
