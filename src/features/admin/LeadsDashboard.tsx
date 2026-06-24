@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
   adminLogout,
+  ApiError,
   deleteLead,
   listLeads,
   updateLeadStatus,
@@ -32,12 +33,15 @@ export default function LeadsDashboard({ onLogout, initialLeads }: LeadsDashboar
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
   const [sortOrder, setSortOrder] = useState<SortOrder>('newest');
   const hasInitialData = useRef(initialLeads !== undefined);
+  // Ids deleted this session — filtered from every fetch so an in-flight or
+  // slightly-stale auto-refresh poll can never resurrect a removed lead.
+  const deletedIds = useRef<Set<string>>(new Set());
 
   const load = useCallback(async (showSpinner = false) => {
     if (showSpinner) setLoading(true);
     try {
       const { leads: fetched } = await listLeads();
-      setLeads(fetched);
+      setLeads(fetched.filter((lead) => !deletedIds.current.has(lead.id)));
       setError('');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not load leads.');
@@ -66,11 +70,15 @@ export default function LeadsDashboard({ onLogout, initialLeads }: LeadsDashboar
 
   const handleDelete = async (lead: Lead) => {
     if (!window.confirm(`Delete the lead from "${lead.name}"? This cannot be undone.`)) return;
+    deletedIds.current.add(lead.id);
     const previous = leads;
     setLeads((current) => current.filter((l) => l.id !== lead.id));
     try {
       await deleteLead(lead.id);
-    } catch {
+    } catch (err) {
+      // 404 means it's already gone — that's the desired end state, treat as success.
+      if (err instanceof ApiError && err.status === 404) return;
+      deletedIds.current.delete(lead.id);
       setLeads(previous);
       setError('Could not delete the lead. Please retry.');
     }
