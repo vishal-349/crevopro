@@ -37,6 +37,7 @@
 // Additive component styles (new selectors only — no legacy overrides).
 @use 'components/forms';
 @use 'components/service-card';
+@use 'components/image-tint';
 
 // Lightweight route transition (opacity only — safe for fixed elements).
 .route-fade {

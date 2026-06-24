@@ -1,0 +1,12 @@
+// Tint the raster artwork toward the pink/purple brand. The hero statue and the
+// founders' background shape were authored in the old green/blue palette; a hue
+// rotation shifts those hues into magenta/violet so the imagery matches the
+// rest of the landing page. (Grayscale content — e.g. the founder photos — is
+// unaffected by hue-rotate, so only the coloured background shifts.)
+.hero-image-wrapper .hero-statue {
+  filter: hue-rotate(110deg) saturate(1.2);
+}
+
+.about .about-image-bg img {
+  filter: hue-rotate(110deg) saturate(1.2);
+}
