@@ -23,10 +23,10 @@ async function handleCreate(req: VercelRequest, res: VercelResponse) {
   const validation = validateLead((req.body ?? {}) as LeadInput);
 
   // Silently accept spam so bots get no signal, but never store it.
-  if (!validation.ok && 'spam' in validation) {
+  if (validation.kind === 'spam') {
     return sendJson(res, 200, { ok: true });
   }
-  if (!validation.ok) {
+  if (validation.kind === 'invalid') {
     return sendJson(res, 400, { error: validation.error });
   }
 

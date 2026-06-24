@@ -12,10 +12,12 @@ export interface CleanLead {
   sourcePage: string;
 }
 
+// A single `kind` discriminant narrows reliably under every TS configuration
+// (avoids the `in`-operator narrowing edge cases that differ across compilers).
 export type ValidationResult =
-  | { ok: true; data: CleanLead }
-  | { ok: false; error: string }
-  | { ok: false; spam: true }; // silently accepted, not stored
+  | { kind: 'ok'; data: CleanLead }
+  | { kind: 'invalid'; error: string }
+  | { kind: 'spam' }; // silently accepted, not stored
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^[+\d][\d\s\-()]{6,19}$/;
@@ -40,14 +42,14 @@ function str(value: unknown): string {
 export function validateLead(input: LeadInput): ValidationResult {
   // 1. Honeypot — bots fill hidden fields; humans never do.
   if (str(input.company_website) !== '') {
-    return { ok: false, spam: true };
+    return { kind: 'spam' };
   }
 
   // 2. Time-trap — submissions faster than a human can type are bots.
   if (typeof input.formLoadedAt === 'number' && Number.isFinite(input.formLoadedAt)) {
     const elapsedSeconds = (Date.now() - input.formLoadedAt) / 1000;
     if (elapsedSeconds >= 0 && elapsedSeconds < MIN_FILL_SECONDS) {
-      return { ok: false, spam: true };
+      return { kind: 'spam' };
     }
   }
 
@@ -60,9 +62,9 @@ export function validateLead(input: LeadInput): ValidationResult {
   const sourcePage = str(input.sourcePage) || '/';
 
   // 3. Required fields.
-  if (name.length < 2) return { ok: false, error: 'Please enter your name.' };
-  if (!EMAIL_RE.test(email)) return { ok: false, error: 'Please enter a valid email address.' };
-  if (!PHONE_RE.test(phone)) return { ok: false, error: 'Please enter a valid phone number.' };
+  if (name.length < 2) return { kind: 'invalid', error: 'Please enter your name.' };
+  if (!EMAIL_RE.test(email)) return { kind: 'invalid', error: 'Please enter a valid email address.' };
+  if (!PHONE_RE.test(phone)) return { kind: 'invalid', error: 'Please enter a valid phone number.' };
 
   // 4. Length caps (anti-abuse).
   if (
@@ -74,11 +76,11 @@ export function validateLead(input: LeadInput): ValidationResult {
     message.length > LIMITS.message ||
     sourcePage.length > LIMITS.sourcePage
   ) {
-    return { ok: false, error: 'One or more fields are too long.' };
+    return { kind: 'invalid', error: 'One or more fields are too long.' };
   }
 
   return {
-    ok: true,
+    kind: 'ok',
     data: { name, email, phone, service, message, brandName, sourcePage },
   };
 }
