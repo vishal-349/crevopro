@@ -119,9 +119,11 @@
     position: absolute;
     // Anchor to the right edge of the image (per reference). Right-anchoring is
     // safe with framer-motion's inline transform (it only animates translateY).
+    // Negative bottom drops the card into the lower band of the hero (level with
+    // the logos on the left); the wrapper sits ~140px above the hero bottom.
     right: 0;
     left: auto;
-    bottom: 6px;
+    bottom: -122px;
     width: 100%;
     max-width: 560px;
     z-index: 3;
