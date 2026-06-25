@@ -1,0 +1,138 @@
+// "Our Process — How We Grow Your Brand" — horizontal step flow shown after Services.
+.process {
+  background-color: #000000;
+  padding: 72px 0 88px;
+}
+.process .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.process__head {
+  text-align: center;
+  margin-bottom: 3.25rem;
+}
+.process__eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(to right, #05fb8d, #03afad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.process__head .section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .process__head .section-title {
+    font-size: 2.8rem;
+  }
+}
+
+.process__flow {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+@media (min-width: 992px) {
+  .process__flow {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
+
+.process-step {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding: 0.4rem 0;
+}
+@media (min-width: 992px) {
+  .process-step {
+    align-items: flex-start;
+  }
+}
+
+.process-step__icon {
+  position: relative;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  color: #ffffff;
+  background:
+    radial-gradient(120% 120% at 32% 24%, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.015) 62%),
+    #0d0f0e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+// Green accent arc on the top-right of the ring (matches the reference detail).
+.process-step__icon::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(from 22deg, #05fb8d 0deg, #03afad 46deg, transparent 46deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2.5px), #000 calc(100% - 2.5px));
+  pointer-events: none;
+}
+.process-step__icon svg {
+  position: relative;
+  z-index: 1;
+}
+
+.process-step__body {
+  min-width: 0;
+}
+.process-step__title {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.45rem;
+}
+.process-step__desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #a8a8b0;
+  margin: 0;
+  max-width: 15rem;
+}
+
+.process__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #05fb8d;
+  align-self: center;
+  padding: 0.2rem 0;
+}
+@media (min-width: 992px) {
+  .process__arrow {
+    align-self: flex-start;
+    margin-top: 31px; // line the arrow up with the centre of the 78px icon
+    flex: 0 0 auto;
+  }
+}
+// Stacked layout (tablet / mobile): arrows point downward.
+@media (max-width: 991.98px) {
+  .process__arrow svg {
+    transform: rotate(90deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-step {
+    transition: none;
+  }
+}

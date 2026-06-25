@@ -98,6 +98,14 @@ export interface ProblemSolved {
   icon: 'leads' | 'visibility' | 'conversion' | 'strategy';
 }
 
+export interface ProcessStep {
+  id: number;
+  title: string;
+  description: string;
+  /** Icon key resolved to an inline SVG in the Process component. */
+  icon: 'discover' | 'strategy' | 'execute' | 'optimize';
+}
+
 export interface BlogPost {
   id: number;
   title: string;

@@ -2,8 +2,23 @@
 .brands-section {
   grid-column: 1 / -1;
   margin-top: 3.5rem;
+  padding: 1.75rem 0 1.5rem;
   z-index: 3;
   position: relative;
+  // Solid black band so the hero statue never shows through behind the marquee
+  // (keeps this row as clean/black as the left side of the hero).
+  background-color: #000000;
+}
+// Soft fade above the band so the statue blends into black instead of a hard edge.
+.brands-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -64px;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, #000000);
+  pointer-events: none;
 }
 .brands-section .brands-title {
   text-align: center;

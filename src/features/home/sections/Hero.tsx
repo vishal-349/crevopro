@@ -24,17 +24,19 @@ export default function Hero() {
           variants={containerVariants}
         >
           <motion.h1 variants={fadeUpItem} className="hero-title">
-            We Turn Brands Into <br />
-            <span>Revenue-Generating Machines</span>
+            We Turn Brands <br />
+            <span>Into Revenue</span> <br />
+            Generating <br />
+            Machines.
           </motion.h1>
 
           <motion.p
             variants={fadeUpItem}
             className="hero-subtitle"
-            style={{ fontSize: '1.15rem', fontWeight: 400, lineHeight: 1.6, maxWidth: '34rem' }}
+            style={{ fontSize: '1.02rem', fontWeight: 400, lineHeight: 1.55, maxWidth: '36rem' }}
           >
-            Creative Design, Performance Marketing &amp; Digital Strategies that help businesses
-            attract customers and scale faster.
+            Creative design. Performance marketing. Powerful websites. <br />
+            Growth strategies that bring real results.
           </motion.p>
 
           <motion.div className="hero-cta" variants={fadeUpItem}>

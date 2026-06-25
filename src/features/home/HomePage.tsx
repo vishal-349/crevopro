@@ -10,6 +10,7 @@ const Hero = lazy(() => import('@/features/home/sections/Hero'));
 const About = lazy(() => import('@/features/home/sections/About'));
 const Problems = lazy(() => import('@/features/home/sections/Problems'));
 const Services = lazy(() => import('@/features/home/sections/Services'));
+const Process = lazy(() => import('@/features/home/sections/Process'));
 const WhyCrevoPro = lazy(() => import('@/features/home/sections/WhyCrevoPro'));
 const Testimonial = lazy(() => import('@/features/home/sections/Testimonial'));
 const Blog = lazy(() => import('@/features/home/sections/Blog'));
@@ -64,6 +65,7 @@ export default function HomePage() {
         <About />
         <Problems />
         <Services />
+        <Process />
         <WhyCrevoPro />
         <Testimonial />
         <Blog />
