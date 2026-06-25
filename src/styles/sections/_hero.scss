@@ -119,12 +119,13 @@
     position: absolute;
     // Anchor to the right edge of the image (per reference). Right-anchoring is
     // safe with framer-motion's inline transform (it only animates translateY).
-    // Nudged down a little so more of the statue shows above the cards.
+    // Sit at the base of the composition so the card's baseline lines up with the
+    // logos on the left, overlapping the lower edge of the statue (not its mid-body).
     right: 0;
     left: auto;
-    bottom: -28px;
+    bottom: -116px;
     width: 100%;
-    max-width: 580px;
+    max-width: 560px;
     z-index: 3;
   }
 }
