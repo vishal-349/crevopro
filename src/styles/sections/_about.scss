@@ -158,6 +158,7 @@
 .about .about-graph {
   position: relative;
   z-index: 2;
+  overflow: hidden;
   width: 100%;
   max-width: 460px;
   padding: 1.6rem 1.6rem 1.3rem;
@@ -166,6 +167,96 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 30px 60px -30px rgba(5, 251, 141, 0.35);
   backdrop-filter: blur(4px);
+  animation: about-card-float 7s ease-in-out infinite;
+}
+.about .about-graph.is-live {
+  border-color: rgba(5, 251, 141, 0.22);
+}
+@keyframes about-card-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* periodic shine sweep across the card */
+.about .about-graph__shine {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.07) 48%,
+    rgba(5, 251, 141, 0.12) 50%,
+    rgba(255, 255, 255, 0.07) 52%,
+    transparent 62%
+  );
+  background-size: 250% 100%;
+  background-position: 150% 0;
+}
+.about .about-graph.is-live .about-graph__shine {
+  animation: about-shine 5.5s ease-in-out 1.6s infinite;
+}
+@keyframes about-shine {
+  0% {
+    background-position: 150% 0;
+  }
+  35%,
+  100% {
+    background-position: -150% 0;
+  }
+}
+
+/* ambient rising particles */
+.about .about-graph__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.about .about-particle {
+  position: absolute;
+  bottom: -8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #05fb8d;
+  box-shadow: 0 0 8px rgba(5, 251, 141, 0.9);
+  opacity: 0;
+}
+.about .about-graph.is-live .about-particle {
+  animation-name: about-particle-rise;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+@keyframes about-particle-rise {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-230px) scale(1);
+    opacity: 0;
+  }
+}
+/* keep card content above the particle layer (z-index: 1) */
+.about .about-graph__head,
+.about .about-graph__chart,
+.about .about-graph__legend {
+  position: relative;
+  z-index: 2;
 }
 .about .about-graph__head {
   display: flex;
@@ -248,6 +339,7 @@
   background: radial-gradient(circle, #05fb8d, transparent 70%);
   top: -30px;
   right: -10px;
+  animation: about-orb-a 9s ease-in-out infinite;
 }
 .about .about-visual__orb--b {
   width: 220px;
@@ -255,4 +347,40 @@
   background: radial-gradient(circle, #03afad, transparent 70%);
   bottom: -40px;
   left: -20px;
+  animation: about-orb-b 11s ease-in-out infinite;
+}
+@keyframes about-orb-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-18px, 16px) scale(1.12);
+    opacity: 0.6;
+  }
+}
+@keyframes about-orb-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(20px, -14px) scale(1.1);
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about .about-graph,
+  .about .about-graph.is-live .about-graph__shine,
+  .about .about-graph.is-live .about-particle,
+  .about .about-visual__orb--a,
+  .about .about-visual__orb--b {
+    animation: none;
+  }
+  .about .about-graph__shine {
+    display: none;
+  }
 }
