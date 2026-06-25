@@ -9,7 +9,7 @@ import oculus from '@/assets/brandWorkWith/Oculus.svg';
 import pretty from '@/assets/brandWorkWith/pretty.svg';
 import techConnect from '@/assets/brandWorkWith/tech-connect.svg';
 
-// Newer client logos (web-optimized from src/assets/brandWorkWith/CrevoPro/*).
+// Newer client logos — web-optimized PNGs used in the marquee.
 import bumpkins from '@/assets/brandWorkWith/clients/bumpkins.png';
 import comfero from '@/assets/brandWorkWith/clients/comfero.png';
 import drAnshika from '@/assets/brandWorkWith/clients/dr-anshika.png';
