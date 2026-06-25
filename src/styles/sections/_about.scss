@@ -135,3 +135,124 @@
   width: 100%;
   height: auto;
 }
+
+/* --- v2 About: animated growth-graph visual (replaces founder photos) --- */
+.about .about-visual {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  margin-top: 1rem;
+}
+@media (min-width: 768px) {
+  .about .about-content {
+    padding-right: 3rem;
+  }
+  .about .about-visual {
+    margin-top: 0;
+  }
+}
+.about .about-graph {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 460px;
+  padding: 1.6rem 1.6rem 1.3rem;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 60px -30px rgba(5, 251, 141, 0.35);
+  backdrop-filter: blur(4px);
+}
+.about .about-graph__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.about .about-graph__heading {
+  display: flex;
+  flex-direction: column;
+}
+.about .about-graph__eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a8a93;
+}
+.about .about-graph__title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 0.15rem;
+}
+.about .about-graph__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #05fb8d;
+  background: rgba(5, 251, 141, 0.12);
+  border: 1px solid rgba(5, 251, 141, 0.3);
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.about .about-graph__chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.about .about-graph__legend {
+  display: flex;
+  gap: 1.25rem;
+  margin-top: 0.8rem;
+}
+.about .about-graph__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #9a9aa2;
+}
+.about .about-graph__legend .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.about .dot--rev {
+  background: #05fb8d;
+}
+.about .dot--leads {
+  background: #03afad;
+}
+.about .dot--reach {
+  background: #77ccff;
+}
+.about .about-visual__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  z-index: 1;
+  pointer-events: none;
+}
+.about .about-visual__orb--a {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #05fb8d, transparent 70%);
+  top: -30px;
+  right: -10px;
+}
+.about .about-visual__orb--b {
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, #03afad, transparent 70%);
+  bottom: -40px;
+  left: -20px;
+}

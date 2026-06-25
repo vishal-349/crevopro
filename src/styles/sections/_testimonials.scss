@@ -113,4 +113,101 @@
   }
 }
 
+/* --- v2 testimonials: 3-up card grid --- */
+.testimonials .t-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.testimonials .t-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(to right, #05fb8d, #03afad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.testimonials .t-head .section-title {
+  margin-bottom: 0;
+}
+.testimonials .t-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+@media (min-width: 768px) {
+  .testimonials .t-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.testimonials .t-card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 2.1rem 1.9rem;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+.testimonials .t-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(5, 251, 141, 0.4);
+  box-shadow: 0 24px 50px -28px rgba(5, 251, 141, 0.45);
+}
+.testimonials .t-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+.testimonials .t-avatar {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #04261d;
+  background: linear-gradient(135deg, #05fb8d, #03afad);
+}
+.testimonials .t-stars {
+  display: inline-flex;
+  gap: 2px;
+}
+.testimonials .t-star {
+  color: #ffb400;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.testimonials .t-quote {
+  margin: 0 0 1.6rem;
+  padding: 0;
+  border: 0;
+  flex: 1 1 auto;
+  color: #d6d6dc;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.testimonials .t-client {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.testimonials .t-client__name {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.testimonials .t-client__role {
+  font-size: 0.88rem;
+  color: #9a9aa2;
+}
+
 /* Marquee effect for brands */

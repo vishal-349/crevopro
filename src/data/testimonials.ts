@@ -1,32 +1,28 @@
 import type { Testimonial } from '@/types/content';
 
-import ewaanLogo from '@/assets/brandWorkWith/Ewaan.svg';
-import techConnectLogo from '@/assets/brandWorkWith/tech-connect.svg';
-import gourmetLogo from '@/assets/brandWorkWith/gourmet.svg';
-
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: 'Ewaan Lifts',
+    name: 'Ahmed Raza',
+    role: 'CEO, Ewaan Lifts',
     quote:
-      '"Working with Crevopro has been a game-changer for our brand. Their designs are creative, clean, and perfectly aligned with our vision. They\'re professional, quick to respond, and always deliver on time."',
+      'CrevoPro completely transformed our online presence. Our leads and sales have never been this consistent.',
     rating: 5,
-    companyLogo: ewaanLogo,
   },
   {
     id: 2,
-    name: 'Tech Connect',
+    name: 'Usman Ali',
+    role: 'Founder, Boostp Energy',
     quote:
-      '"The team at CrevoPro delivered exceptional results for our marketing campaign. Their creativity and attention to detail is unmatched. We\'ve seen a significant increase in engagement since implementing their strategies."',
+      'Amazing team! Their ad strategies helped us scale faster and achieve 4x return on ad spend.',
     rating: 5,
-    companyLogo: techConnectLogo,
   },
   {
     id: 3,
-    name: 'Gourmet Foods',
+    name: 'Bilal Khan',
+    role: 'Director, Wilshire Pest Control',
     quote:
-      '"CrevoPro helped us establish our brand identity from scratch. Their strategic approach and design expertise were exactly what we needed. Our customers love our new look and our sales have increased by 30%."',
+      'Professional, creative and result-driven. Highly recommended for any business that wants real growth.',
     rating: 5,
-    companyLogo: gourmetLogo,
   },
 ];

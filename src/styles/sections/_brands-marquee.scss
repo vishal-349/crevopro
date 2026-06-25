@@ -1,37 +1,79 @@
-// Auto-extracted from the canonical compiled stylesheet (design source of truth).
+// Brand logo marquee — data-driven, fixed-size containers so every logo reads
+// at the same visual size (object-fit: contain), with a seamless CSS loop.
 .brands-marquee-wrapper {
   width: 100%;
   overflow: hidden;
   position: relative;
   margin-top: 1.5rem;
-}
-.brands-marquee {
-  display: flex;
-  width: max-content;
-}
-.brands-container {
-  display: flex;
-  gap: 4rem !important;
-  align-items: center;
-}
-/* Uniform size & color for brand logos */
-.brands-container img {
-  height: 60px;                  
-  width: auto;
-  object-fit: contain;
-  filter: brightness(0) invert(1) contrast(120%) saturate(150%);
-  opacity: 0.95;                     
-  transition: transform 0.3s ease, filter 0.3s ease;
+  // Fade the strip into the background at both edges.
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 7%,
+    #000 93%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
 }
 
-.brands-container img:hover {
-  transform: scale(1.1);            
-  filter: brightness(1) invert(0) saturate(100%) !important; 
+.brands-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: brands-scroll 50s linear infinite;
+}
+
+.brands-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes brands-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    // The list is duplicated, so -50% lands exactly one full set over.
+    transform: translateX(-50%);
+  }
+}
+
+.brands-marquee-wrapper .brand-item {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 64px;
+  margin: 0 1.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.brands-marquee-wrapper .brand-item img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.brands-marquee-wrapper .brand-item:hover img {
   opacity: 1;
+  transform: scale(1.06);
 }
 
 @media (max-width: 600px) {
-  .brands-container {
-    gap: 2rem !important;
+  .brands-marquee-wrapper .brand-item {
+    width: 120px;
+    height: 52px;
+    margin: 0 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands-track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 }

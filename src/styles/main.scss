@@ -21,6 +21,7 @@
 // Sections — order preserved to keep the cascade identical.
 @use 'sections/navbar';
 @use 'sections/about';
+@use 'sections/problems';
 @use 'sections/hero';
 @use 'sections/brands';
 @use 'sections/portfolio';
@@ -33,6 +34,7 @@
 @use 'sections/why-crevopro';
 @use 'sections/testimonials';
 @use 'sections/brands-marquee';
+@use 'sections/faq';
 
 // Additive component styles (new selectors only — no legacy overrides).
 @use 'components/forms';

@@ -1,0 +1,14 @@
+<svg width="96" height="84" viewBox="0 0 96 84" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="pm_grad" x1="0" y1="0" x2="96" y2="84" gradientUnits="userSpaceOnUse">
+<stop stop-color="#AAAAAA"/>
+<stop offset="1" stop-color="#232323"/>
+</linearGradient>
+</defs>
+<rect x="6" y="54" width="14" height="24" rx="3" fill="url(#pm_grad)"/>
+<rect x="28" y="44" width="14" height="34" rx="3" fill="url(#pm_grad)"/>
+<rect x="50" y="32" width="14" height="46" rx="3" fill="url(#pm_grad)"/>
+<rect x="72" y="18" width="14" height="60" rx="3" fill="url(#pm_grad)"/>
+<path d="M9 42 L34 30 L55 36 L84 11" stroke="url(#pm_grad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M70 8 L87 8 L87 25" stroke="url(#pm_grad)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

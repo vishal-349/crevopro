@@ -8,11 +8,12 @@ const Navbar = lazy(() => import('@/components/layout/Navbar'));
 const Footer = lazy(() => import('@/components/layout/Footer'));
 const Hero = lazy(() => import('@/features/home/sections/Hero'));
 const About = lazy(() => import('@/features/home/sections/About'));
+const Problems = lazy(() => import('@/features/home/sections/Problems'));
 const Services = lazy(() => import('@/features/home/sections/Services'));
-const Portfolio = lazy(() => import('@/features/home/sections/Portfolio'));
 const WhyCrevoPro = lazy(() => import('@/features/home/sections/WhyCrevoPro'));
 const Testimonial = lazy(() => import('@/features/home/sections/Testimonial'));
 const Blog = lazy(() => import('@/features/home/sections/Blog'));
+const Faq = lazy(() => import('@/features/home/sections/Faq'));
 const ContactSection = lazy(() => import('@/features/contact/ContactSection'));
 
 const INTRO_LOAD_MS = 2000;
@@ -61,11 +62,12 @@ export default function HomePage() {
       <main>
         <Hero />
         <About />
+        <Problems />
         <Services />
-        <Portfolio />
         <WhyCrevoPro />
         <Testimonial />
         <Blog />
+        <Faq />
         <ContactSection />
       </main>
       <Footer />

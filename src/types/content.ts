@@ -79,9 +79,23 @@ export interface PortfolioItem {
 export interface Testimonial {
   id: number;
   name: string;
+  role: string;
   quote: string;
   rating: number;
-  companyLogo: string;
+  companyLogo?: string;
+}
+
+export interface Faq {
+  question: string;
+  answer: string;
+}
+
+export interface ProblemSolved {
+  id: number;
+  title: string;
+  description: string;
+  /** Icon key resolved to an inline SVG in the Problems component. */
+  icon: 'leads' | 'visibility' | 'conversion' | 'strategy';
 }
 
 export interface BlogPost {
@@ -102,9 +116,6 @@ export interface NavLink {
   label: string;
   href: string;
   isButton?: boolean;
-}
-
-export interface FooterColumn {
-  title: string;
-  links: string[];
+  /** When true, href is an app route (e.g. /portfolio) rather than an in-page anchor. */
+  isRoute?: boolean;
 }

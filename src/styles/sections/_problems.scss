@@ -1,0 +1,71 @@
+// "Problems We Solve" — 4-up card row shown after the About section.
+.problems {
+  background-color: #000000;
+  padding: 64px 0 80px;
+}
+.problems .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.problems__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+@media (min-width: 992px) {
+  .problems__title {
+    font-size: 3rem;
+  }
+}
+.problems__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 576px) {
+  .problems__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .problems__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.problem-card {
+  padding: 1.9rem 1.6rem;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.problem-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(5, 251, 141, 0.4);
+  box-shadow: 0 24px 50px -28px rgba(5, 251, 141, 0.45);
+}
+.problem-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.1rem;
+  border-radius: 12px;
+  color: #05fb8d;
+  background: rgba(5, 251, 141, 0.1);
+  border: 1px solid rgba(5, 251, 141, 0.25);
+}
+.problem-card__title {
+  font-size: 1.12rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.problem-card__desc {
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: #a8a8b0;
+}

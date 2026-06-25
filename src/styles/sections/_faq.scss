@@ -1,0 +1,104 @@
+// Homepage FAQ accordion.
+.faq {
+  background-color: #000000;
+  padding: 80px 0;
+}
+.faq .container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.faq__head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.faq__eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(to right, #05fb8d, #03afad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.faq__head .section-title {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .faq__head .section-title {
+    font-size: 2.8rem;
+  }
+}
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.faq__item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+.faq__item.is-open {
+  border-color: rgba(5, 251, 141, 0.4);
+  background: rgba(5, 251, 141, 0.04);
+}
+.faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.3rem 1.5rem;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+.faq__icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+}
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: #05fb8d;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.faq__item.is-open .faq__icon::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
+}
+.faq__a-wrap {
+  overflow: hidden;
+}
+.faq__a {
+  margin: 0;
+  padding: 0 1.5rem 1.4rem;
+  color: #b3b3bb;
+  font-size: 0.97rem;
+  line-height: 1.7;
+}
