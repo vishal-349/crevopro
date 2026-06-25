@@ -94,8 +94,8 @@ export interface ProblemSolved {
   id: number;
   title: string;
   description: string;
-  /** Inline SVG path data for the line-art icon. */
-  icon: string;
+  /** Icon key resolved to an inline SVG in the Problems component. */
+  icon: 'leads' | 'visibility' | 'conversion' | 'strategy';
 }
 
 export interface BlogPost {
