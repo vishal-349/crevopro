@@ -24,6 +24,10 @@ export const contactInfo: ContactInfo = {
 
 export const copyrightText = '© 2026 CrevoPro';
 
+/** Footer credit. Replace portfolioUrl with Vishal's portfolio website later. */
+export const creditAuthor = 'Vishal Tyagi';
+export const portfolioUrl = '#'; // TODO: insert portfolio website URL
+
 export interface SocialLink {
   label: string;
   href: string;

@@ -231,9 +231,25 @@
 }
 .footer .footer-bottom {
   justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 .footer .footer-copyright {
   text-align: center;
+}
+.footer .footer-credit {
+  text-align: center;
+  margin: 0;
+  font-size: 0.82rem;
+  color: #7c7c85;
+}
+.footer .footer-credit__link {
+  color: #05fb8d;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer .footer-credit__link:hover {
+  text-decoration: underline;
 }
 .footer .footer-phones__nums {
   display: inline-flex;

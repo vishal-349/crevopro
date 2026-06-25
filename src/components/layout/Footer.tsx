@@ -1,5 +1,11 @@
 import footerLogo from '@/assets/logo3.svg';
-import { contactInfo, copyrightText, socialLinks } from '@/data/navigation';
+import {
+  contactInfo,
+  copyrightText,
+  creditAuthor,
+  portfolioUrl,
+  socialLinks,
+} from '@/data/navigation';
 
 const socialIconPaths: Record<string, string> = {
   Facebook:
@@ -85,6 +91,13 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p className="footer-copyright">{copyrightText}</p>
+          <p className="footer-credit">
+            Designed &amp; Developed by {creditAuthor}
+            <span className="footer-credit__sep" aria-hidden="true"> • </span>
+            <a className="footer-credit__link" href={portfolioUrl}>
+              Portfolio
+            </a>
+          </p>
         </div>
       </div>
     </footer>
