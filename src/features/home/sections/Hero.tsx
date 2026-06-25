@@ -80,7 +80,24 @@ export default function Hero() {
             </Link>
           </motion.div>
 
-          <motion.div className="hero-stats" variants={fadeUpItem}>
+        </motion.div>
+
+        <div className="hero-image-wrapper">
+          <motion.img
+            src={heroImage}
+            alt="Hero"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="hero-statue"
+          />
+
+          <motion.div
+            className="hero-stats"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
             {HERO_STATS.map((stat) => (
               <div className="hero-stat" key={stat.label}>
                 <span className="hero-stat__icon" aria-hidden="true">
@@ -93,17 +110,6 @@ export default function Hero() {
               </div>
             ))}
           </motion.div>
-        </motion.div>
-
-        <div className="hero-image-wrapper">
-          <motion.img
-            src={heroImage}
-            alt="Hero"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="hero-statue"
-          />
         </div>
 
         <motion.div

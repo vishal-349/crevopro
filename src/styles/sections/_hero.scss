@@ -104,15 +104,30 @@
   background: rgba(5, 251, 141, 0.08);
 }
 
-/* --- Hero stats strip --- */
+/* --- Hero stats strip (overlaps the statue on desktop, per reference) --- */
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  max-width: 560px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(6px);
+  border-radius: 18px;
+  background: rgba(8, 13, 11, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+}
+@media (min-width: 769px) {
+  .hero-image-wrapper .hero-stats {
+    position: absolute;
+    // Centre horizontally with margin auto (NOT translateX) — framer-motion sets
+    // its own inline transform for the entrance, which would override translateX.
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 560px;
+    z-index: 3;
+  }
 }
 .hero-stat {
   display: flex;
