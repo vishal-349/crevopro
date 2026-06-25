@@ -109,7 +109,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-radius: 18px;
-  background: rgba(8, 13, 11, 0.72);
+  background: rgba(6, 10, 9, 0.93);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
@@ -123,7 +123,7 @@
     // the logos on the left); the wrapper sits ~140px above the hero bottom.
     right: 0;
     left: auto;
-    bottom: -122px;
+    bottom: -140px;
     width: 100%;
     max-width: 560px;
     z-index: 3;
@@ -188,8 +188,16 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 150px;
-    background: linear-gradient(to top, #000000, transparent);
+    // Fade the lower band of the statue (incl. the raw "code" texture) to black so
+    // the stats card sits on clean darkness instead of busy image.
+    height: 430px;
+    background: linear-gradient(
+      to top,
+      #000000 0%,
+      #000000 66%,
+      rgba(0, 0, 0, 0.45) 86%,
+      transparent 100%
+    );
     z-index: 2;
   }
 }
