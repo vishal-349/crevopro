@@ -117,13 +117,11 @@
 @media (min-width: 769px) {
   .hero-image-wrapper .hero-stats {
     position: absolute;
-    // Centre horizontally with margin auto (NOT translateX) — framer-motion sets
-    // its own inline transform for the entrance, which would override translateX.
-    left: 0;
+    // Anchor to the right edge of the image (per reference). Right-anchoring is
+    // safe with framer-motion's inline transform (it only animates translateY).
     right: 0;
+    left: auto;
     bottom: 6px;
-    margin-left: auto;
-    margin-right: auto;
     width: 100%;
     max-width: 560px;
     z-index: 3;

@@ -80,6 +80,23 @@ export default function Hero() {
             </Link>
           </motion.div>
 
+          <motion.div className="brands-section" variants={fadeUpItem}>
+            <h3 className="brands-title">Trusted by 25+ businesses worldwide</h3>
+
+            <div className="brands-marquee-wrapper">
+              <div className="brands-track">
+                {marqueeLogos.map((brand, index) => (
+                  <div
+                    className="brand-item"
+                    key={`${brand.name}-${index}`}
+                    aria-hidden={index >= brands.length}
+                  >
+                    <img src={brand.logo} alt={brand.name} loading="lazy" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="hero-image-wrapper">
@@ -111,29 +128,6 @@ export default function Hero() {
             ))}
           </motion.div>
         </div>
-
-        <motion.div
-          className="brands-section"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1 }}
-        >
-          <h3 className="brands-title">Trusted by 25+ businesses worldwide</h3>
-
-          <div className="brands-marquee-wrapper">
-            <div className="brands-track">
-              {marqueeLogos.map((brand, index) => (
-                <div
-                  className="brand-item"
-                  key={`${brand.name}-${index}`}
-                  aria-hidden={index >= brands.length}
-                >
-                  <img src={brand.logo} alt={brand.name} loading="lazy" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
