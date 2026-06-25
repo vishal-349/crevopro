@@ -5,9 +5,15 @@
   overflow: hidden;
   position: relative;
   margin-top: 1.5rem;
-  // Logos start flush-left (aligned with the "Trusted by" label); fade the right edge only.
-  -webkit-mask-image: linear-gradient(to right, #000 0, #000 78%, transparent 100%);
-  mask-image: linear-gradient(to right, #000 0, #000 78%, transparent 100%);
+  // Full-width strip: fade both edges into the background.
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 6%,
+    #000 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
 }
 
 .brands-track {
