@@ -109,7 +109,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   border-radius: 18px;
-  background: rgba(6, 10, 9, 0.93);
+  background: rgba(8, 13, 11, 0.72);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(10px);
@@ -119,21 +119,20 @@
     position: absolute;
     // Anchor to the right edge of the image (per reference). Right-anchoring is
     // safe with framer-motion's inline transform (it only animates translateY).
-    // Negative bottom drops the card into the lower band of the hero (level with
-    // the logos on the left); the wrapper sits ~140px above the hero bottom.
+    // Nudged down a little so more of the statue shows above the cards.
     right: 0;
     left: auto;
-    bottom: -140px;
+    bottom: -28px;
     width: 100%;
-    max-width: 560px;
+    max-width: 580px;
     z-index: 3;
   }
 }
 .hero-stat {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  padding: 1.2rem 1rem;
+  gap: 0.35rem;
+  padding: 1.5rem 1.25rem;
 }
 .hero-stat + .hero-stat {
   border-left: 1px solid rgba(255, 255, 255, 0.09);
@@ -144,7 +143,7 @@
   line-height: 0;
 }
 .hero-stat__value {
-  font-size: 1.7rem;
+  font-size: 1.85rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.05;
@@ -188,16 +187,8 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    // Fade the lower band of the statue (incl. the raw "code" texture) to black so
-    // the stats card sits on clean darkness instead of busy image.
-    height: 430px;
-    background: linear-gradient(
-      to top,
-      #000000 0%,
-      #000000 66%,
-      rgba(0, 0, 0, 0.45) 86%,
-      transparent 100%
-    );
+    height: 150px;
+    background: linear-gradient(to top, #000000, transparent);
     z-index: 2;
   }
 }
