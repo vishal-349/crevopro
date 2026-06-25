@@ -3,7 +3,7 @@ import type { FormEvent, MouseEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import logo from '@/assets/logo.svg';
+import logo from '@/assets/logo-full.svg';
 import { navLinks } from '@/data/navigation';
 import type { NavLink } from '@/types/content';
 import { useScrolled } from '@/hooks/useScrolled';
