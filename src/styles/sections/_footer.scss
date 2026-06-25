@@ -235,6 +235,23 @@
 .footer .footer-copyright {
   text-align: center;
 }
+.footer .footer-phones__nums {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+.footer .footer-phones__nums a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.footer .footer-phones__nums a:hover {
+  color: #ffffff;
+}
+.footer .footer-phones__sep {
+  opacity: 0.5;
+}
 
 @media (max-width: 768px) {
   .hero-container {

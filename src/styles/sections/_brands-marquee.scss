@@ -39,16 +39,18 @@
 
 .brands-marquee-wrapper .brand-item {
   flex: 0 0 auto;
-  width: 150px;
-  height: 64px;
-  margin: 0 1.5rem;
+  width: 160px;
+  height: 80px;
+  margin: 0 1.25rem;
   display: grid;
   place-items: center;
 }
 
 .brands-marquee-wrapper .brand-item img {
-  max-width: 100%;
-  max-height: 100%;
+  // Pixel caps (percentage max-height fails to resolve for large raster logos
+  // in a grid item, which let some PNGs render full-size and get clipped).
+  max-width: 120px;
+  max-height: 46px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -63,9 +65,13 @@
 
 @media (max-width: 600px) {
   .brands-marquee-wrapper .brand-item {
-    width: 120px;
-    height: 52px;
-    margin: 0 1rem;
+    width: 124px;
+    height: 64px;
+    margin: 0 0.85rem;
+  }
+  .brands-marquee-wrapper .brand-item img {
+    max-width: 96px;
+    max-height: 38px;
   }
 }
 
