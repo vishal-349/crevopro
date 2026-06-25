@@ -1,17 +1,14 @@
 import { motion } from 'framer-motion';
-import type { Variants } from 'framer-motion';
 
 import heroImage from '@/assets/hero.svg';
 import { brands } from '@/data/brands';
 import { createStaggerContainer, fadeUpItem } from '@/lib/animations';
 
 const containerVariants = createStaggerContainer(0.3, 0.2);
-const brandVariants = createStaggerContainer(0.1, 1.2);
 
-const brandItemVariants: Variants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 0.7, y: 0, transition: { duration: 0.5 } },
-};
+// Rendered twice so the CSS marquee (translateX 0 → -50%) loops seamlessly
+// regardless of how many brands are in the data.
+const marqueeLogos = [...brands, ...brands];
 
 export default function Hero() {
   return (
@@ -24,14 +21,17 @@ export default function Hero() {
           variants={containerVariants}
         >
           <motion.h1 variants={fadeUpItem} className="hero-title">
-            Fuel Your <br />
-            Brand's <br />
-            Growth <br />
-            with <span>Crevopro</span>
+            We Turn Brands Into <br />
+            <span>Revenue-Generating Machines</span>
           </motion.h1>
 
-          <motion.p variants={fadeUpItem} className="hero-subtitle">
-            — Design, Market, and Sell Smarter.
+          <motion.p
+            variants={fadeUpItem}
+            className="hero-subtitle"
+            style={{ fontSize: '1.15rem', fontWeight: 400, lineHeight: 1.6, maxWidth: '34rem' }}
+          >
+            Creative Design, Performance Marketing &amp; Digital Strategies that help businesses
+            attract customers and scale faster.
           </motion.p>
         </motion.div>
 
@@ -48,40 +48,27 @@ export default function Hero() {
 
         <motion.div
           className="brands-section"
-          initial="hidden"
-          animate="visible"
-          variants={brandVariants}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1 }}
         >
-          <motion.h3 variants={brandItemVariants} className="brands-title">
+          <h3 className="brands-title">
             <br />
-            Brands we've worked with
-          </motion.h3>
+            Brands we&apos;ve worked with
+          </h3>
 
           <div className="brands-marquee-wrapper">
-            <motion.div
-              className="brands-marquee"
-              initial={{ x: 0 }}
-              animate={{ x: [0, -1000] }}
-              transition={{
-                repeat: Infinity,
-                repeatType: 'loop',
-                duration: 18,
-                ease: 'linear',
-              }}
-            >
-              <div className="brands-container">
-                {/* Rendered twice for a seamless looping marquee. */}
-                {[...brands, ...brands].map((brand, index) => (
-                  <motion.div
-                    key={`${brand.name}-${index}`}
-                    variants={brandItemVariants}
-                    className="brand-item"
-                  >
-                    <img src={brand.logo} alt={brand.name} />
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            <div className="brands-track">
+              {marqueeLogos.map((brand, index) => (
+                <div
+                  className="brand-item"
+                  key={`${brand.name}-${index}`}
+                  aria-hidden={index >= brands.length}
+                >
+                  <img src={brand.logo} alt={brand.name} loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>
