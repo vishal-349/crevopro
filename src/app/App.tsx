@@ -8,6 +8,7 @@ import HomePage from '@/features/home/HomePage';
 // import here on purpose — it keeps the eager entry bundle small; per-page
 // content animations are loaded with their own chunks.)
 const ServiceDetailPage = lazy(() => import('@/features/services/ServiceDetailPage'));
+const PortfolioPage = lazy(() => import('@/features/portfolio/PortfolioPage'));
 const AdminApp = lazy(() => import('@/features/admin/AdminApp'));
 
 /** Reset scroll to top on navigation (unless a hash anchor is targeted). */
@@ -32,6 +33,14 @@ function RoutedApp() {
           element={
             <Suspense fallback={<Loader />}>
               <ServiceDetailPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/portfolio"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PortfolioPage />
             </Suspense>
           }
         />
