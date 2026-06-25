@@ -1,55 +1,65 @@
 import type { Service } from '@/types/content';
 
-import graphicDesignIcon from '@/assets/graphic-design.svg';
-import digitalMarketingIcon from '@/assets/digitalMarketing.svg';
-import webDesignIcon from '@/assets/websiteDesign.svg';
-import ecommerceIcon from '@/assets/eccomerce.svg';
-import outdoorIcon from '@/assets/outdoorAdvertising.svg';
+import brandIdentityIcon from '@/assets/graphic-design.svg';
+import socialMediaIcon from '@/assets/digitalMarketing.svg';
+import performanceIcon from '@/assets/performanceMarketing.svg';
+import brandShootIcon from '@/assets/brandShoot.svg';
+import signageIcon from '@/assets/outdoorAdvertising.svg';
+import webIcon from '@/assets/websiteDesign.svg';
 
 export const services: Service[] = [
   {
     id: 1,
-    slug: 'graphic-design',
-    icon: graphicDesignIcon,
-    title: 'Graphic Design',
+    slug: 'brand-identity-creative',
+    icon: brandIdentityIcon,
+    title: 'Brand Identity & Creative',
     description:
-      'Professional graphic design services for all your branding and marketing needs, including logo design, brand identity, print materials, and digital assets.',
+      'Logos, brand identity, and scroll-stopping creatives that make your brand instantly recognisable and impossible to ignore.',
     accent: { from: '#FF6FD8', to: '#A78BFA' },
   },
   {
     id: 2,
-    slug: 'digital-marketing',
-    icon: digitalMarketingIcon,
-    title: 'Digital Marketing',
+    slug: 'social-media-marketing',
+    icon: socialMediaIcon,
+    title: 'Social Media Marketing',
     description:
-      'Strategic digital marketing campaigns to boost your online presence and reach, including SEO, social media marketing, content strategy, and paid advertising.',
+      'Always-on social content, reels, and community management that grow your audience and keep your brand top of mind.',
     accent: { from: '#FF8A3D', to: '#FF4D6D' },
   },
   {
     id: 3,
-    slug: 'website-design',
-    icon: webDesignIcon,
-    title: 'Website Design',
+    slug: 'performance-marketing',
+    icon: performanceIcon,
+    title: 'Performance Marketing',
     description:
-      'Custom website design and development for businesses of all sizes, focusing on user experience, responsive design, and conversion optimization.',
-    accent: { from: '#3DA8FF', to: '#5EEAD4' },
-  },
-  {
-    id: 4,
-    slug: 'ecommerce-solutions',
-    icon: ecommerceIcon,
-    title: 'E-commerce Solutions',
-    description:
-      'Complete e-commerce solutions to help you sell products online effectively, including store setup, payment integration, and inventory management.',
+      'Data-driven Meta & Google ad campaigns engineered for a lower cost per lead and a measurable return on ad spend.',
     accent: { from: '#05FB8D', to: '#00C2A8' },
   },
   {
-    id: 5,
-    slug: 'outdoor-advertising',
-    icon: outdoorIcon,
-    title: 'Outdoor & LED Advertising',
+    id: 4,
+    slug: 'brand-shoot-editing',
+    icon: brandShootIcon,
+    title: 'Brand Shoot & Editing',
     description:
-      'High-impact advertising on large LED screens, digital billboards, mall screens, and roadside displays — campaign planning, creative, and citywide reach.',
+      'Professional brand shoots, product photography, and reel/video editing that make every piece of content look premium.',
+    accent: { from: '#7C5CFF', to: '#FF6FD8' },
+  },
+  {
+    id: 5,
+    slug: 'digital-signage',
+    icon: signageIcon,
+    title: 'Digital Signage',
+    description:
+      'High-impact advertising on LED screens, digital billboards, and mall displays for maximum visibility and citywide reach.',
     accent: { from: '#FFE53B', to: '#FF2EC4' },
+  },
+  {
+    id: 6,
+    slug: 'web-design-development',
+    icon: webIcon,
+    title: 'Web Design & Development',
+    description:
+      'Fast, responsive, conversion-focused websites — designed around your users and engineered to rank well and sell.',
+    accent: { from: '#3DA8FF', to: '#5EEAD4' },
   },
 ];

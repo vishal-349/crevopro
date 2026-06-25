@@ -2,9 +2,9 @@ import type { ServiceDetail } from '@/types/content';
 
 /** Rich, per-service content powering the premium detail pages, keyed by slug. */
 export const serviceDetails: Record<string, ServiceDetail> = {
-  'graphic-design': {
-    slug: 'graphic-design',
-    title: 'Graphic Design',
+  'brand-identity-creative': {
+    slug: 'brand-identity-creative',
+    title: 'Brand Identity & Creative',
     eyebrow: 'Brand & Visual Identity',
     tagline: 'Design that makes people stop scrolling.',
     heroDescription:
@@ -117,47 +117,158 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ctaText: 'Tell us about your brand and we will send back a concept that turns heads.',
   },
 
-  'digital-marketing': {
-    slug: 'digital-marketing',
-    title: 'Digital Marketing',
-    eyebrow: 'Growth & Performance',
-    tagline: 'Marketing that moves the metrics that matter.',
+  'social-media-marketing': {
+    slug: 'social-media-marketing',
+    title: 'Social Media Marketing',
+    eyebrow: 'Social & Community',
+    tagline: 'Show up, stand out, stay top of mind.',
     heroDescription:
-      'SEO, paid media, social, and content working as one engine — engineered to grow reach, capture demand, and turn attention into measurable revenue.',
+      'Always-on social content, reels, and community management — a consistent, on-brand presence that grows your audience and turns followers into customers.',
     stats: [
-      { value: 4, suffix: 'x', label: 'Avg. ROAS' },
-      { value: 250, suffix: '%', label: 'Avg. traffic lift' },
-      { value: 30, suffix: '+', label: 'Active campaigns' },
-      { value: 1.2, prefix: '', suffix: 'M+', label: 'Monthly reach' },
+      { value: 3, suffix: 'x', label: 'Avg. engagement lift' },
+      { value: 20, suffix: '+', label: 'Posts / month' },
+      { value: 40, suffix: '+', label: 'Brands managed' },
+      { value: 90, suffix: '%', label: 'On-time delivery' },
     ],
     whatWeDo: [
       {
-        title: 'SEO & Content',
-        description:
-          'Rank for the searches that bring buyers, backed by content people actually read.',
+        title: 'Content Planning',
+        description: 'A monthly calendar mapped to your goals, launches, and trending moments.',
       },
       {
-        title: 'Paid Advertising',
-        description: 'Google, Meta, and YouTube ads tuned daily for the lowest cost per result.',
+        title: 'Creatives & Reels',
+        description: 'Scroll-stopping posts, stories, and short-form video that get shared.',
       },
       {
-        title: 'Social Media',
-        description: 'Always-on social that builds community and keeps your brand top of mind.',
+        title: 'Captions & Copy',
+        description: 'On-brand captions and hooks written to start conversations and drive action.',
       },
       {
-        title: 'Analytics & Reporting',
-        description: 'Clear dashboards that connect every rupee spent to outcomes.',
+        title: 'Community Management',
+        description: 'We reply, engage, and nurture your audience so the brand feels alive.',
       },
     ],
     process: [
       {
         title: 'Audit',
-        description:
-          'We benchmark your funnel, channels, and competitors to find the fastest wins.',
+        description: 'We review your channels, audience, and competitors to find quick wins.',
       },
       {
         title: 'Strategy',
-        description: 'A channel mix and message map built around your goals and budget.',
+        description: 'A content pillar system and posting cadence built around your brand.',
+      },
+      {
+        title: 'Create',
+        description: 'We design, write, and schedule a full month of content for approval.',
+      },
+      {
+        title: 'Engage & Optimise',
+        description: 'We manage the community and double down on what the data rewards.',
+      },
+    ],
+    benefits: [
+      {
+        title: 'Consistent presence',
+        description: 'A steady, professional feed that builds trust with every visitor.',
+      },
+      {
+        title: 'Real engagement',
+        description: 'Content built for saves, shares, and comments — not just likes.',
+      },
+      {
+        title: 'Audience growth',
+        description: 'Reach new, relevant followers who actually become customers.',
+      },
+      {
+        title: 'Time back',
+        description: 'We run the channels end-to-end so you can run the business.',
+      },
+    ],
+    highlights: [
+      { title: 'Gourmet Social Surge', category: 'Content + Reels' },
+      { title: 'Pretty Launch Calendar', category: 'Campaign' },
+      { title: 'Tech Connect Always-On', category: 'Community' },
+      { title: 'Ansika Reel Series', category: 'Short-form Video' },
+    ],
+    whyChooseUs: [
+      {
+        title: 'Creators in-house',
+        description: 'Strategy, design, and copy under one roof for fast, cohesive content.',
+      },
+      {
+        title: 'Brand-safe & on-tone',
+        description: 'Everything stays true to your voice and visual identity.',
+      },
+      {
+        title: 'Reported clearly',
+        description: 'Simple monthly reporting on growth, reach, and engagement.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'Which platforms do you manage?',
+        answer:
+          'Primarily Instagram, Facebook, and LinkedIn, with YouTube and others added based on where your audience actually is.',
+      },
+      {
+        question: 'Do you create the content too?',
+        answer:
+          'Yes — planning, design, captions, and reels are all produced in-house. You simply review and approve.',
+      },
+      {
+        question: 'How many posts do I get?',
+        answer:
+          'Packages typically include 15–25 pieces a month across posts, stories, and reels, tailored to your goals.',
+      },
+      {
+        question: 'Will you handle replies and DMs?',
+        answer:
+          'Community management is included so comments and messages are answered promptly and on-brand.',
+      },
+    ],
+    ctaHeading: 'Ready to grow your social presence?',
+    ctaText: 'Get a free social audit and a content plan tailored to your brand.',
+  },
+
+  'performance-marketing': {
+    slug: 'performance-marketing',
+    title: 'Performance Marketing',
+    eyebrow: 'Growth & Paid Media',
+    tagline: 'Ad spend in, measurable revenue out.',
+    heroDescription:
+      'Data-driven Meta and Google campaigns — engineered, tested, and optimised daily to lower your cost per lead and grow a return on ad spend you can actually see.',
+    stats: [
+      { value: 4, suffix: 'x', label: 'Avg. ROAS' },
+      { value: 250, suffix: '%', label: 'Avg. traffic lift' },
+      { value: 30, suffix: '+', label: 'Active campaigns' },
+      { value: 1.2, suffix: 'M+', label: 'Monthly reach' },
+    ],
+    whatWeDo: [
+      {
+        title: 'Meta Ads',
+        description: 'Facebook and Instagram campaigns tuned for the lowest cost per result.',
+      },
+      {
+        title: 'Google Ads',
+        description: 'Search, Performance Max, and YouTube to capture and create demand.',
+      },
+      {
+        title: 'Landing Pages',
+        description: 'High-converting pages built to turn paid clicks into customers.',
+      },
+      {
+        title: 'Tracking & Analytics',
+        description: 'Clean conversion tracking and dashboards that tie spend to revenue.',
+      },
+    ],
+    process: [
+      {
+        title: 'Audit',
+        description: 'We benchmark your funnel, accounts, and competitors to find the fastest wins.',
+      },
+      {
+        title: 'Strategy',
+        description: 'A channel mix and offer plan built around your goals and budget.',
       },
       { title: 'Launch', description: 'Campaigns go live with tight tracking from day one.' },
       {
@@ -180,24 +291,24 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         description: 'You see exactly where budget goes and what it returns.',
       },
       {
-        title: 'Compounding growth',
-        description: 'SEO and content build an asset that keeps paying off.',
+        title: 'Profit-focused',
+        description: 'We optimise for ROAS and revenue, not vanity metrics.',
       },
     ],
     highlights: [
-      { title: 'Care First Lead Engine', category: 'Paid + SEO' },
+      { title: 'Care First Lead Engine', category: 'Paid + Search' },
       { title: 'Oculus Launch Campaign', category: 'Performance Ads' },
-      { title: 'Ansika Content Growth', category: 'SEO & Content' },
-      { title: 'Gourmet Social Surge', category: 'Social Media' },
+      { title: 'Pretty D2C Scale-Up', category: 'Meta Ads' },
+      { title: 'Tech Connect PMax', category: 'Google Ads' },
     ],
     whyChooseUs: [
       {
         title: 'Revenue-first',
-        description: 'We optimise for pipeline and ROAS, not vanity likes and impressions.',
+        description: 'We optimise for pipeline and ROAS, not impressions and likes.',
       },
       {
-        title: 'In-house creative',
-        description: 'Ads, copy, and landing pages produced under one roof for speed.',
+        title: 'Creative + media',
+        description: 'Ad creative, copy, and landing pages produced under one roof for speed.',
       },
       {
         title: 'No lock-in',
@@ -208,15 +319,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       {
         question: 'How soon will I see results?',
         answer:
-          'Paid channels can show traction within weeks; SEO compounds over 3–6 months. We set realistic milestones up front.',
+          'Paid channels can show traction within the first few weeks. We set realistic milestones and optimise from real data.',
       },
       {
-        question: 'What budget do I need?',
+        question: 'What ad budget do I need?',
         answer:
-          'We tailor the plan to your stage — from lean startups to scale-ups — and recommend a media budget that fits your goals.',
+          'We tailor the plan to your stage and recommend a media budget that fits your goals — lean to scale-up.',
       },
       {
-        question: 'Do you handle the creative too?',
+        question: 'Do you make the ad creative?',
         answer:
           'Yes. Strategy, ad creative, copy, and landing pages are all produced in-house so campaigns ship fast.',
       },
@@ -226,230 +337,126 @@ export const serviceDetails: Record<string, ServiceDetail> = {
           'You get a live dashboard plus a clear monthly readout tying spend to leads, sales, and ROAS.',
       },
     ],
-    ctaHeading: 'Ready to turn attention into revenue?',
-    ctaText: 'Get a free growth audit and a channel plan tailored to your business.',
+    ctaHeading: 'Ready to turn ad spend into revenue?',
+    ctaText: 'Get a free growth audit and a paid-media plan tailored to your business.',
   },
 
-  'website-design': {
-    slug: 'website-design',
-    title: 'Website Design',
-    eyebrow: 'Web Design & Development',
-    tagline: 'Websites that look stunning and convert.',
+  'brand-shoot-editing': {
+    slug: 'brand-shoot-editing',
+    title: 'Brand Shoot & Editing',
+    eyebrow: 'Photography & Video',
+    tagline: 'Content that looks as good as your brand.',
     heroDescription:
-      'Fast, responsive, conversion-focused websites — designed around your users and engineered to load instantly, rank well, and turn visitors into customers.',
+      'Professional brand shoots, product photography, and reel/video editing — premium visuals and scroll-stopping edits that make your brand look the part everywhere.',
     stats: [
-      { value: 90, suffix: '+', label: 'Lighthouse score' },
-      { value: 200, suffix: '+', label: 'Sites shipped' },
-      { value: 1.5, suffix: 's', label: 'Avg. load time' },
-      { value: 100, suffix: '%', label: 'Responsive' },
+      { value: 200, suffix: '+', label: 'Shoots delivered' },
+      { value: 5, suffix: 'k+', label: 'Edits produced' },
+      { value: 48, suffix: 'h', label: 'Avg. edit turnaround' },
+      { value: 4, suffix: 'K', label: 'Up to 4K video' },
     ],
     whatWeDo: [
       {
-        title: 'UI/UX Design',
-        description: 'Interfaces designed around real user journeys, not guesswork.',
+        title: 'Brand & Product Shoots',
+        description: 'Styled, lit, and art-directed photography that elevates your products.',
       },
       {
-        title: 'Responsive Development',
-        description: 'Flawless on mobile, tablet, laptop, and desktop — every time.',
+        title: 'Reels & Short-form Video',
+        description: 'Story-driven reels shot and cut for maximum reach and retention.',
       },
       {
-        title: 'Landing Pages',
-        description: 'High-converting pages purpose-built for campaigns and launches.',
+        title: 'Video Editing',
+        description: 'Punchy edits with captions, motion, and sound design that hold attention.',
       },
       {
-        title: 'Performance & SEO',
-        description: 'Engineered for speed, accessibility, and search visibility.',
+        title: 'Retouching & Grading',
+        description: 'Professional retouching and colour grading for a consistent, premium look.',
       },
     ],
     process: [
       {
         title: 'Plan',
-        description: 'Sitemap, goals, and content strategy mapped to your audience.',
+        description: 'We build a shot list and mood board aligned to your brand and channels.',
       },
-      { title: 'Design', description: 'High-fidelity, on-brand mockups for every key screen.' },
-      { title: 'Build', description: 'Clean, modern, responsive code with performance baked in.' },
       {
-        title: 'Launch & Care',
-        description: 'Smooth go-live plus ongoing support and improvements.',
+        title: 'Shoot',
+        description: 'A guided, efficient shoot day with professional lighting and direction.',
+      },
+      {
+        title: 'Edit',
+        description: 'We cut, retouch, grade, and caption every deliverable to spec.',
+      },
+      {
+        title: 'Deliver',
+        description: 'Organised, ready-to-post assets sized for every platform you need.',
       },
     ],
     benefits: [
       {
-        title: 'First impressions that win',
-        description: 'A polished site builds instant credibility with every visitor.',
+        title: 'Premium perception',
+        description: 'High-quality visuals instantly make your brand look bigger and more trusted.',
       },
       {
-        title: 'More conversions',
-        description: 'Clear journeys and fast pages turn more visitors into customers.',
+        title: 'Content that performs',
+        description: 'Edits built for the feed — designed to stop the scroll and get shares.',
       },
       {
-        title: 'Found on Google',
-        description: 'Speed, structure, and SEO best practices baked in from day one.',
+        title: 'A full content bank',
+        description: 'One shoot fuels weeks of posts, ads, and reels across channels.',
       },
       {
-        title: 'Easy to manage',
-        description: 'Built so your team can update content without a developer.',
+        title: 'Consistent look',
+        description: 'A unified style and grade so every piece feels unmistakably yours.',
       },
     ],
     highlights: [
-      { title: 'Tech Connect Platform', category: 'Web App' },
-      { title: 'Ewaan Corporate Site', category: 'Website Design' },
-      { title: 'Care First Landing', category: 'Landing Page' },
-      { title: 'Oculus Product Site', category: 'UI/UX' },
+      { title: 'Gourmet Product Shoot', category: 'Photography' },
+      { title: 'Pretty Reel Series', category: 'Short-form Video' },
+      { title: 'Ewaan Brand Film', category: 'Video Editing' },
+      { title: 'Ansika Catalogue Shoot', category: 'Product Photography' },
     ],
     whyChooseUs: [
       {
-        title: 'Design + engineering',
-        description: 'One team handles both, so nothing gets lost in handoff.',
+        title: 'Shoot + edit in-house',
+        description: 'One team captures and finishes, so the look stays consistent and fast.',
       },
       {
-        title: 'Built to perform',
-        description: 'We obsess over load time, accessibility, and Core Web Vitals.',
+        title: 'Built for social',
+        description: 'Every asset is delivered sized and formatted for where it will live.',
       },
       {
-        title: 'Future-proof stack',
-        description: 'Modern, maintainable code that is easy to grow with.',
+        title: 'Fast turnaround',
+        description: 'Tight, reliable timelines so your content never goes stale.',
       },
     ],
     faqs: [
       {
-        question: 'How long does a website take?',
+        question: 'Do you travel for shoots?',
         answer:
-          'Most marketing sites launch in 3–6 weeks depending on page count and complexity. We share a clear timeline up front.',
+          'Yes — we shoot on location or in-studio. We plan logistics up front so the day runs smoothly.',
       },
       {
-        question: 'Can I edit the site myself?',
+        question: 'Can you edit footage I already have?',
         answer:
-          'Yes — we build with editing in mind and hand over training so your team can update content easily.',
+          'Absolutely. Send us your raw photos or footage and we will retouch, edit, and grade it to a premium finish.',
       },
       {
-        question: 'Is the site mobile-friendly?',
+        question: 'What formats do I receive?',
         answer:
-          'Always. Every site is mobile-first and tested across phones, tablets, and desktops before launch.',
+          'You get assets sized for every platform — vertical reels, square posts, and high-res stills for web and print.',
       },
       {
-        question: 'Do you provide hosting and support?',
+        question: 'How fast is delivery?',
         answer:
-          'We deploy to fast, reliable hosting and offer ongoing care plans for updates and improvements.',
+          'Most edits are delivered within 48–72 hours, with full shoots delivered on an agreed schedule.',
       },
     ],
-    ctaHeading: 'Your next website starts here.',
-    ctaText: 'Share your goals and we will propose a site that looks incredible and performs.',
+    ctaHeading: 'Make your content look premium.',
+    ctaText: 'Tell us what you need to shoot and we will plan a session that delivers.',
   },
 
-  'ecommerce-solutions': {
-    slug: 'ecommerce-solutions',
-    title: 'E-commerce Solutions',
-    eyebrow: 'Online Stores & Retail',
-    tagline: 'Stores built to sell, scale, and delight.',
-    heroDescription:
-      'End-to-end e-commerce — from storefront design and payments to inventory and growth — built to give shoppers a frictionless experience and you more revenue.',
-    stats: [
-      { value: 35, suffix: '%', label: 'Avg. conversion lift' },
-      { value: 80, suffix: '+', label: 'Stores launched' },
-      { value: 24, suffix: '/7', label: 'Selling, always on' },
-      { value: 2, suffix: 'x', label: 'Repeat purchase rate' },
-    ],
-    whatWeDo: [
-      {
-        title: 'Store Setup',
-        description: 'Beautiful, fast storefronts on the right platform for your business.',
-      },
-      {
-        title: 'Payments & Checkout',
-        description: 'Secure, frictionless checkout that maximises completed orders.',
-      },
-      {
-        title: 'Catalogue & Inventory',
-        description: 'Product, pricing, and stock systems that stay in sync.',
-      },
-      {
-        title: 'Growth & Retention',
-        description: 'Email, offers, and analytics that turn buyers into regulars.',
-      },
-    ],
-    process: [
-      {
-        title: 'Scope',
-        description: 'We map your products, logistics, and goals into a clear build plan.',
-      },
-      {
-        title: 'Build',
-        description: 'Storefront, catalogue, payments, and shipping configured end to end.',
-      },
-      {
-        title: 'Optimise',
-        description: 'Checkout, speed, and product pages tuned for conversion.',
-      },
-      { title: 'Grow', description: 'Retention flows and campaigns to increase repeat revenue.' },
-    ],
-    benefits: [
-      {
-        title: 'Sell around the clock',
-        description: 'A reliable store that takes orders while you sleep.',
-      },
-      {
-        title: 'Higher order value',
-        description: 'Smart merchandising and upsells lift average cart size.',
-      },
-      {
-        title: 'Fewer abandoned carts',
-        description: 'A frictionless checkout recovers revenue you were losing.',
-      },
-      {
-        title: 'One source of truth',
-        description: 'Inventory and orders synced so operations stay sane.',
-      },
-    ],
-    highlights: [
-      { title: 'Gourmet Online Store', category: 'Store Build' },
-      { title: 'Pretty D2C Launch', category: 'E-commerce' },
-      { title: 'Ansika Catalogue', category: 'Catalogue Setup' },
-      { title: 'Care First Retention', category: 'Growth' },
-    ],
-    whyChooseUs: [
-      {
-        title: 'Commerce specialists',
-        description: 'We know what actually moves conversion and retention.',
-      },
-      {
-        title: 'Platform-agnostic',
-        description: 'We recommend the right platform for you, not the one we prefer.',
-      },
-      {
-        title: 'Built for operations',
-        description: 'Stores designed to be easy for your team to run day to day.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'Which platform do you use?',
-        answer:
-          'We work across Shopify, WooCommerce, and custom builds — and recommend the best fit for your catalogue and budget.',
-      },
-      {
-        question: 'Can you migrate my existing store?',
-        answer:
-          'Yes, we handle migrations of products, customers, and orders with care to avoid downtime or data loss.',
-      },
-      {
-        question: 'Do you set up payments and shipping?',
-        answer:
-          'We configure payment gateways, taxes, and shipping rules end to end so you can start selling immediately.',
-      },
-      {
-        question: 'Will it integrate with my tools?',
-        answer:
-          'We integrate with your inventory, accounting, and marketing tools to keep everything in sync.',
-      },
-    ],
-    ctaHeading: 'Build a store that sells while you sleep.',
-    ctaText: 'Tell us what you sell and we will map the fastest path to launch and growth.',
-  },
-
-  'outdoor-advertising': {
-    slug: 'outdoor-advertising',
-    title: 'Outdoor & LED Advertising',
+  'digital-signage': {
+    slug: 'digital-signage',
+    title: 'Digital Signage',
     eyebrow: 'LED Screens & Digital Out-of-Home',
     tagline: 'Own the city. Light up every street.',
     heroDescription:
@@ -570,6 +577,113 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     ctaHeading: 'Put your brand on the biggest screens in the city.',
     ctaText: 'Tell us your target locations and budget — we will build a high-impact LED plan.',
+  },
+
+  'web-design-development': {
+    slug: 'web-design-development',
+    title: 'Web Design & Development',
+    eyebrow: 'Web Design & Development',
+    tagline: 'Websites that look stunning and convert.',
+    heroDescription:
+      'Fast, responsive, conversion-focused websites — designed around your users and engineered to load instantly, rank well, and turn visitors into customers.',
+    stats: [
+      { value: 90, suffix: '+', label: 'Lighthouse score' },
+      { value: 200, suffix: '+', label: 'Sites shipped' },
+      { value: 1.5, suffix: 's', label: 'Avg. load time' },
+      { value: 100, suffix: '%', label: 'Responsive' },
+    ],
+    whatWeDo: [
+      {
+        title: 'UI/UX Design',
+        description: 'Interfaces designed around real user journeys, not guesswork.',
+      },
+      {
+        title: 'Responsive Development',
+        description: 'Flawless on mobile, tablet, laptop, and desktop — every time.',
+      },
+      {
+        title: 'Landing Pages',
+        description: 'High-converting pages purpose-built for campaigns and launches.',
+      },
+      {
+        title: 'Performance & SEO',
+        description: 'Engineered for speed, accessibility, and search visibility.',
+      },
+    ],
+    process: [
+      {
+        title: 'Plan',
+        description: 'Sitemap, goals, and content strategy mapped to your audience.',
+      },
+      { title: 'Design', description: 'High-fidelity, on-brand mockups for every key screen.' },
+      { title: 'Build', description: 'Clean, modern, responsive code with performance baked in.' },
+      {
+        title: 'Launch & Care',
+        description: 'Smooth go-live plus ongoing support and improvements.',
+      },
+    ],
+    benefits: [
+      {
+        title: 'First impressions that win',
+        description: 'A polished site builds instant credibility with every visitor.',
+      },
+      {
+        title: 'More conversions',
+        description: 'Clear journeys and fast pages turn more visitors into customers.',
+      },
+      {
+        title: 'Found on Google',
+        description: 'Speed, structure, and SEO best practices baked in from day one.',
+      },
+      {
+        title: 'Easy to manage',
+        description: 'Built so your team can update content without a developer.',
+      },
+    ],
+    highlights: [
+      { title: 'Tech Connect Platform', category: 'Web App' },
+      { title: 'Ewaan Corporate Site', category: 'Website Design' },
+      { title: 'Care First Landing', category: 'Landing Page' },
+      { title: 'Oculus Product Site', category: 'UI/UX' },
+    ],
+    whyChooseUs: [
+      {
+        title: 'Design + engineering',
+        description: 'One team handles both, so nothing gets lost in handoff.',
+      },
+      {
+        title: 'Built to perform',
+        description: 'We obsess over load time, accessibility, and Core Web Vitals.',
+      },
+      {
+        title: 'Future-proof stack',
+        description: 'Modern, maintainable code that is easy to grow with.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does a website take?',
+        answer:
+          'Most marketing sites launch in 3–6 weeks depending on page count and complexity. We share a clear timeline up front.',
+      },
+      {
+        question: 'Can I edit the site myself?',
+        answer:
+          'Yes — we build with editing in mind and hand over training so your team can update content easily.',
+      },
+      {
+        question: 'Is the site mobile-friendly?',
+        answer:
+          'Always. Every site is mobile-first and tested across phones, tablets, and desktops before launch.',
+      },
+      {
+        question: 'Do you provide hosting and support?',
+        answer:
+          'We deploy to fast, reliable hosting and offer ongoing care plans for updates and improvements.',
+      },
+    ],
+    ctaHeading: 'Your next website starts here.',
+    ctaText: 'Share your goals and we will propose a site that looks incredible and performs.',
   },
 };
 
