@@ -1,86 +1,71 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import type { Variants } from 'framer-motion';
 
 import { testimonials } from '@/data/testimonials';
 
+const containerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+};
+
+function initials(name: string): string {
+  return name
+    .split(' ')
+    .map((part) => part[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
+
 export default function Testimonial() {
-  const swiperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!swiperRef.current) {
-      return;
-    }
-
-    const swiper = new Swiper(swiperRef.current, {
-      modules: [Navigation, Pagination, Autoplay],
-      slidesPerView: 1,
-      spaceBetween: 30,
-      centeredSlides: true,
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
-
-    return () => {
-      swiper.destroy();
-    };
-  }, []);
-
   return (
     <section id="testimonials" className="testimonials">
       <div className="container">
-        <motion.h2
-          className="section-title"
+        <motion.div
+          className="t-head"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
         >
-          Client Feedback
-        </motion.h2>
+          <span className="t-eyebrow">TESTIMONIALS</span>
+          <h2 className="section-title">What Our Clients Say</h2>
+        </motion.div>
 
-        <div className="testimonial-slider">
-          <div className="swiper-container" ref={swiperRef}>
-            <div className="swiper-wrapper">
-              {testimonials.map((testimonial) => (
-                <div className="swiper-slide" key={testimonial.id}>
-                  <div className="testimonial-card">
-                    <div className="testimonial-client">
-                      <div className="client-logo">
-                        <img src={testimonial.companyLogo} alt={`${testimonial.name} logo`} />
-                      </div>
-                    </div>
-                    <div className="testimonial-content">
-                      <p>{testimonial.quote}</p>
-                      <div className="client-info">
-                        <h4>{testimonial.name}</h4>
-                        <p>
-                          {Array.from({ length: testimonial.rating }).map((_, index) => (
-                            <span key={index} className="star">
-                              ★
-                            </span>
-                          ))}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="swiper-pagination"></div>
-          </div>
-        </div>
+        <motion.div
+          className="t-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+        >
+          {testimonials.map((testimonial) => (
+            <motion.figure className="t-card" key={testimonial.id} variants={cardVariants}>
+              <div className="t-card__top">
+                <span className="t-avatar" aria-hidden="true">
+                  {initials(testimonial.name)}
+                </span>
+                <span className="t-stars" aria-label={`${testimonial.rating} out of 5 stars`}>
+                  {Array.from({ length: testimonial.rating }).map((_, index) => (
+                    <span key={index} className="t-star" aria-hidden="true">
+                      ★
+                    </span>
+                  ))}
+                </span>
+              </div>
+              <blockquote className="t-quote">“{testimonial.quote}”</blockquote>
+              <figcaption className="t-client">
+                <span className="t-client__name">{testimonial.name}</span>
+                <span className="t-client__role">{testimonial.role}</span>
+              </figcaption>
+            </motion.figure>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

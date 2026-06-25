@@ -145,12 +145,12 @@ export default function ContactSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="contact-title">Book an appointment</h2>
+            <h2 className="contact-title">Get Your Free Growth Audit</h2>
             <p className="contact-subtitle">
-              now and get a free consultation with top creative and digital experts.
+              We will analyze your business and give you a custom growth plan.
             </p>
             <p className="contact-text">
-              From design to marketing, web, or e-commerce –
+              From brand identity and performance marketing to web and digital signage –
               <span className="brand-highlight">Crevopro</span> helps elevate your brand.
             </p>
 

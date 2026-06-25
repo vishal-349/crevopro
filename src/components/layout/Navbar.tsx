@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 import logo from '@/assets/logo.svg';
 import { navLinks } from '@/data/navigation';
+import type { NavLink } from '@/types/content';
 import { useScrolled } from '@/hooks/useScrolled';
 
 const navVariants = {
@@ -25,27 +26,36 @@ const itemVariants = {
 };
 
 // Maps a search term to the page section it should jump to (single-page site).
-const SEARCH_INDEX: { id: string; keywords: string[] }[] = [
+// `route` entries navigate to a dedicated page instead of scrolling.
+const SEARCH_INDEX: { id: string; keywords: string[]; route?: string }[] = [
   { id: 'about', keywords: ['about', 'team', 'who', 'agency', 'company'] },
   {
     id: 'services',
     keywords: [
       'service',
       'services',
-      'graphic',
+      'brand',
+      'identity',
+      'creative',
       'design',
+      'social',
+      'media',
       'marketing',
+      'performance',
+      'shoot',
+      'editing',
+      'signage',
+      'led',
       'digital',
       'web',
       'website',
-      'ecommerce',
-      'e-commerce',
-      'commerce',
+      'development',
       'seo',
     ],
   },
   {
     id: 'portfolio',
+    route: '/portfolio',
     keywords: [
       'portfolio',
       'work',
@@ -83,12 +93,12 @@ const SEARCH_INDEX: { id: string; keywords: string[] }[] = [
   },
 ];
 
-function findSectionId(query: string): string | null {
+function findSection(query: string): (typeof SEARCH_INDEX)[number] | null {
   const q = query.trim().toLowerCase();
   if (!q) return null;
   for (const section of SEARCH_INDEX) {
     if (section.id.includes(q) || section.keywords.some((k) => k.includes(q) || q.includes(k))) {
-      return section.id;
+      return section;
     }
   }
   return null;
@@ -126,16 +136,26 @@ export default function Navbar() {
     closeMenu();
   };
 
-  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, link: NavLink) => {
     event.preventDefault();
-    goToSection(href.replace('#', ''));
+    if (link.isRoute) {
+      navigate(link.href);
+      closeMenu();
+      return;
+    }
+    goToSection(link.href.replace('#', ''));
   };
 
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const sectionId = findSectionId(searchValue);
-    if (sectionId) {
-      goToSection(sectionId);
+    const section = findSection(searchValue);
+    if (section) {
+      if (section.route) {
+        navigate(section.route);
+        closeMenu();
+      } else {
+        goToSection(section.id);
+      }
       setSearchValue('');
     }
   };
@@ -159,9 +179,9 @@ export default function Navbar() {
             {navLinks.map((link) => (
               <motion.li key={link.href} variants={itemVariants}>
                 <a
-                  href={onHome ? link.href : `/${link.href}`}
+                  href={link.isRoute ? link.href : onHome ? link.href : `/${link.href}`}
                   className={link.isButton ? 'contact-btn' : undefined}
-                  onClick={(event) => handleNavClick(event, link.href)}
+                  onClick={(event) => handleNavClick(event, link)}
                 >
                   {link.label}
                 </a>
