@@ -108,8 +108,8 @@ export default function WhyCrevoPro() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          From eye-catching designs and targeted campaigns to custom websites and fully managed
-          online stores, our team blends creativity with performance to deliver real results. We
+          From eye-catching designs and targeted campaigns to high-performing websites and
+          always-on social, our team blends creativity with performance to deliver real results. We
           handle the details, so you can focus on running your business.
         </motion.p>
 
@@ -121,7 +121,7 @@ export default function WhyCrevoPro() {
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           At CrevoPro, we don't just create – we elevate. Partner with us to transform your brand
-          through smart design, strategic marketing, and efficient e-commerce solutions tailored to
+          through smart design, strategic marketing, and performance-driven campaigns tailored to
           your goals.
         </motion.p>
       </div>
