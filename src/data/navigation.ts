@@ -16,7 +16,7 @@ export interface ContactInfo {
 }
 
 export const contactInfo: ContactInfo = {
-  address: '210, Purani Tehsil, Roorkee, Uttarakhand 247667',
+  address: '210, Purani Tehsil, Roorkee, Uttarakhand, 247667',
   phonePrimary: '+91 99603 23974',
   phoneSecondary: '+91 70377 92988',
   email: 'infocrevopro@gmail.com',
