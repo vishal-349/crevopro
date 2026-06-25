@@ -51,14 +51,14 @@ export default function Footer() {
             <ContactIcon path={ICON.pin} />
             <span>{contactInfo.address}</span>
           </span>
-          <a className="footer-contact-item" href={telHref(contactInfo.phonePrimary)}>
+          <span className="footer-contact-item footer-contact-item--static footer-phones">
             <ContactIcon path={ICON.phone} />
-            <span>{contactInfo.phonePrimary}</span>
-          </a>
-          <a className="footer-contact-item" href={telHref(contactInfo.phoneSecondary)}>
-            <ContactIcon path={ICON.phone} />
-            <span>{contactInfo.phoneSecondary}</span>
-          </a>
+            <span className="footer-phones__nums">
+              <a href={telHref(contactInfo.phonePrimary)}>{contactInfo.phonePrimary}</a>
+              <span className="footer-phones__sep">,</span>
+              <a href={telHref(contactInfo.phoneSecondary)}>{contactInfo.phoneSecondary}</a>
+            </span>
+          </span>
           <a className="footer-contact-item" href={`mailto:${contactInfo.email}`}>
             <ContactIcon path={ICON.mail} />
             <span>{contactInfo.email}</span>
