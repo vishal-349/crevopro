@@ -73,15 +73,21 @@ export default function About() {
               About Us
             </motion.h2>
             <motion.p variants={fadeUpItem} className="about-text">
-              At CrevoPro, we're a team of passionate designers, marketers, and strategists
-              dedicated to fueling your brand's growth. With a focus on creativity and results, we
-              deliver solutions that help businesses stand out in today's competitive landscape.
+              At CrevoPro, we're a team of passionate designers, developers, marketers, and
+              strategists dedicated to fueling your brand's growth. With a focus on creativity and
+              results, we deliver solutions that help businesses stand out in today's competitive
+              landscape.
             </motion.p>
             <motion.p variants={fadeUpItem} className="about-text">
               Our approach combines strategic thinking with creative execution to create meaningful
               experiences that connect with your audience and drive business growth. We believe in
               building long-term partnerships with our clients, understanding their unique
               challenges, and delivering tailored solutions that exceed expectations.
+            </motion.p>
+            <motion.p variants={fadeUpItem} className="about-text">
+              And when it's time to bring your brand online, our web design and development team
+              crafts fast, responsive, conversion-focused websites — engineered to rank well, load
+              quickly, and turn visitors into loyal customers.
             </motion.p>
           </motion.div>
 
