@@ -9,14 +9,14 @@ export const navLinks: NavLink[] = [
 ];
 
 export interface ContactInfo {
-  address: string;
+  locations: string[];
   phonePrimary: string;
   phoneSecondary: string;
   email: string;
 }
 
 export const contactInfo: ContactInfo = {
-  address: 'Roorkee, Uttarakhand, 247667',
+  locations: ['Roorkee', 'Gurugram'],
   phonePrimary: '+91 88594 28724',
   phoneSecondary: '+91 96903 23974',
   email: 'infocrevopro@gmail.com',

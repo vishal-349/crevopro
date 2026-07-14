@@ -95,10 +95,9 @@ export default function WhyCrevoPro() {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           We offer all-in-one solutions across Brand Identity &amp; Creative, Social Media
-          Marketing, Performance Marketing, Brand Shoot &amp; Editing, Digital Signage, and Web
-          Design &amp; Development. As a dynamic creative agency in India, we craft bold and
-          effective strategies, and performance-focused experiences that help brands grow and
-          thrive.
+          Marketing, Web Design &amp; Development, Performance Marketing, Brand Shoot &amp; Editing,
+          and Digital Signage. As a dynamic creative agency in India, we craft bold and effective
+          strategies, and performance-focused experiences that help brands grow and thrive.
         </motion.p>
 
         <motion.p

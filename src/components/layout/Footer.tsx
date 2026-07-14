@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import footerLogo from '@/assets/logo3.svg';
 import { contactInfo, copyrightText, creditAuthor, socialLinks } from '@/data/navigation';
 
@@ -47,9 +49,20 @@ export default function Footer() {
         </div>
 
         <div className="footer-contact">
-          <span className="footer-contact-item footer-contact-item--static">
-            <ContactIcon path={ICON.pin} />
-            <span>{contactInfo.address}</span>
+          <span className="footer-locations">
+            {contactInfo.locations.map((location, index) => (
+              <Fragment key={location}>
+                {index > 0 && (
+                  <span className="footer-locations__sep" aria-hidden="true">
+                    |
+                  </span>
+                )}
+                <span className="footer-contact-item footer-contact-item--static">
+                  <ContactIcon path={ICON.pin} />
+                  <span>{location}</span>
+                </span>
+              </Fragment>
+            ))}
           </span>
           <span className="footer-contact-item footer-contact-item--static footer-phones">
             <ContactIcon path={ICON.phone} />

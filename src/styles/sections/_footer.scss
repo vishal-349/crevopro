@@ -188,6 +188,16 @@
 .footer .footer-contact-item--static::before {
   display: none;
 }
+.footer .footer-locations {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.footer .footer-locations__sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 300;
+  user-select: none;
+}
 .footer .footer-social-wrap {
   display: flex;
   justify-content: center;

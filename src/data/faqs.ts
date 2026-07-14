@@ -5,7 +5,7 @@ export const faqs: Faq[] = [
   {
     question: 'What services does CrevoPro provide?',
     answer:
-      'CrevoPro provides complete brand growth solutions, including Brand Identity & Creatives, Performance Marketing, Social Media Marketing, Digital Signage, and Brand Shoot & Editing. We combine creativity, strategy, and digital marketing to help businesses build a strong and impactful brand presence.',
+      'CrevoPro provides complete brand growth solutions, including Brand Identity & Creative, Social Media Marketing, Web Design & Development, Performance Marketing, Brand Shoot & Editing, and Digital Signage. We combine creativity, strategy, and digital marketing to help businesses build a strong and impactful brand presence.',
   },
   {
     question: 'How can CrevoPro help my business grow?',
