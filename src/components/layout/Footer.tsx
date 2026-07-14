@@ -49,33 +49,43 @@ export default function Footer() {
         </div>
 
         <div className="footer-contact">
-          <span className="footer-locations">
-            {contactInfo.locations.map((location, index) => (
-              <Fragment key={location}>
-                {index > 0 && (
-                  <span className="footer-locations__sep" aria-hidden="true">
-                    |
-                  </span>
-                )}
-                <span className="footer-contact-item footer-contact-item--static">
-                  <ContactIcon path={ICON.pin} />
-                  <span>{location}</span>
+          {[
+            ...contactInfo.locations.map((location) => ({
+              icon: ICON.pin,
+              label: location,
+              href: undefined as string | undefined,
+            })),
+            {
+              icon: ICON.phone,
+              label: contactInfo.phonePrimary,
+              href: telHref(contactInfo.phonePrimary),
+            },
+            {
+              icon: ICON.phone,
+              label: contactInfo.phoneSecondary,
+              href: telHref(contactInfo.phoneSecondary),
+            },
+            { icon: ICON.mail, label: contactInfo.email, href: `mailto:${contactInfo.email}` },
+          ].map((item, index) => (
+            <Fragment key={item.label}>
+              {index > 0 && (
+                <span className="footer-contact__sep" aria-hidden="true">
+                  |
                 </span>
-              </Fragment>
-            ))}
-          </span>
-          <span className="footer-contact-item footer-contact-item--static footer-phones">
-            <ContactIcon path={ICON.phone} />
-            <span className="footer-phones__nums">
-              <a href={telHref(contactInfo.phonePrimary)}>{contactInfo.phonePrimary}</a>
-              <span className="footer-phones__sep">,</span>
-              <a href={telHref(contactInfo.phoneSecondary)}>{contactInfo.phoneSecondary}</a>
-            </span>
-          </span>
-          <a className="footer-contact-item" href={`mailto:${contactInfo.email}`}>
-            <ContactIcon path={ICON.mail} />
-            <span>{contactInfo.email}</span>
-          </a>
+              )}
+              {item.href ? (
+                <a className="footer-contact-item" href={item.href}>
+                  <ContactIcon path={item.icon} />
+                  <span>{item.label}</span>
+                </a>
+              ) : (
+                <span className="footer-contact-item footer-contact-item--static">
+                  <ContactIcon path={item.icon} />
+                  <span>{item.label}</span>
+                </span>
+              )}
+            </Fragment>
+          ))}
         </div>
 
         <div className="footer-social-wrap">
