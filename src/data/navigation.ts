@@ -17,16 +17,15 @@ export interface ContactInfo {
 
 export const contactInfo: ContactInfo = {
   address: 'Roorkee, Uttarakhand, 247667',
-  phonePrimary: '+91 96903 23974',
-  phoneSecondary: '+91 70377 92988',
+  phonePrimary: '+91 88594 28724',
+  phoneSecondary: '+91 96903 23974',
   email: 'infocrevopro@gmail.com',
 };
 
 export const copyrightText = '© 2026 CrevoPro';
 
-/** Footer credit. Replace portfolioUrl with Vishal's portfolio website later. */
-export const creditAuthor = 'Vishal Tyagi';
-export const portfolioUrl = '#'; // TODO: insert portfolio website URL
+/** Footer credit line. ` ` = non-breaking spaces so the extra gap after "Team" isn't collapsed. */
+export const creditAuthor = 'Team  CrevoPro';
 
 export interface SocialLink {
   label: string;
@@ -35,7 +34,7 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61576661860797' },
-  { label: 'WhatsApp', href: 'https://wa.me/917037792988' },
+  { label: 'WhatsApp', href: 'https://wa.me/918859428724' },
   { label: 'Instagram', href: 'https://www.instagram.com/crevopro/' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/crevo-pro-a216ab368/' },
   { label: 'Pinterest', href: 'https://www.pinterest.com/crevopro/' },

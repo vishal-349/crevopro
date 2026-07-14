@@ -243,26 +243,6 @@
   font-size: 0.82rem;
   color: #7c7c85;
 }
-.footer .footer-credit__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.22rem;
-  color: #05fb8d;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.25s ease, opacity 0.25s ease;
-}
-.footer .footer-credit__link svg {
-  flex: 0 0 auto;
-  transition: transform 0.25s ease;
-}
-.footer .footer-credit__link:hover {
-  color: #4dffb0;
-}
-.footer .footer-credit__link:hover svg {
-  transform: translate(2px, -2px);
-}
 .footer .footer-phones__nums {
   display: inline-flex;
   align-items: center;
