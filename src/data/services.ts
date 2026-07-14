@@ -28,6 +28,15 @@ export const services: Service[] = [
   },
   {
     id: 3,
+    slug: 'web-design-development',
+    icon: webIcon,
+    title: 'Web Design & Development',
+    description:
+      'Fast, responsive, conversion-focused websites — designed around your users and engineered to rank well and sell.',
+    accent: { from: '#3DA8FF', to: '#5EEAD4' },
+  },
+  {
+    id: 4,
     slug: 'performance-marketing',
     icon: performanceIcon,
     title: 'Performance Marketing',
@@ -36,7 +45,7 @@ export const services: Service[] = [
     accent: { from: '#05FB8D', to: '#00C2A8' },
   },
   {
-    id: 4,
+    id: 5,
     slug: 'brand-shoot-editing',
     icon: brandShootIcon,
     title: 'Brand Shoot & Editing',
@@ -45,21 +54,12 @@ export const services: Service[] = [
     accent: { from: '#7C5CFF', to: '#FF6FD8' },
   },
   {
-    id: 5,
+    id: 6,
     slug: 'digital-signage',
     icon: signageIcon,
     title: 'Digital Signage',
     description:
       'High-impact advertising on LED screens, digital billboards, and mall displays for maximum visibility and citywide reach.',
     accent: { from: '#FFE53B', to: '#FF2EC4' },
-  },
-  {
-    id: 6,
-    slug: 'web-design-development',
-    icon: webIcon,
-    title: 'Web Design & Development',
-    description:
-      'Fast, responsive, conversion-focused websites — designed around your users and engineered to rank well and sell.',
-    accent: { from: '#3DA8FF', to: '#5EEAD4' },
   },
 ];
