@@ -55,12 +55,16 @@
   height: auto;
   object-fit: contain;
   opacity: 0.85;
+  // Every logo reads black & white in the marquee, whatever the source artwork.
+  filter: grayscale(1);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .brands-marquee-wrapper .brand-item:hover img {
   opacity: 1;
   transform: scale(1.06);
+  // Stays desaturated on hover — only brightness/scale respond.
+  filter: grayscale(1);
 }
 
 @media (max-width: 600px) {
