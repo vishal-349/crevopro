@@ -16,7 +16,7 @@ export interface ContactInfo {
 }
 
 export const contactInfo: ContactInfo = {
-  locations: ['Roorkee', 'Gurugram'],
+  locations: ['Roorkee', 'Gurugram', 'Dehradun'],
   phonePrimary: '+91 88594 28724',
   phoneSecondary: '+91 96903 23974',
   email: 'infocrevopro@gmail.com',
