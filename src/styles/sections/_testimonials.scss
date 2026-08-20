@@ -133,18 +133,75 @@
 .testimonials .t-head .section-title {
   margin-bottom: 0;
 }
-.testimonials .t-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+// Scroll-snap carousel, three cards per view on desktop — same mechanic as the
+// blog carousel, so both sections share the `useCarousel` hook.
+.testimonials .t-carousel {
+  position: relative;
+}
+.testimonials .t-track {
+  display: flex;
   gap: 1.75rem;
   align-items: stretch;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  // vertical room so the card hover-lift isn't clipped by the scroll container
+  padding: 14px 4px 18px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.testimonials .t-track::-webkit-scrollbar {
+  display: none;
+}
+
+// Prev / next arrows — only the relevant one shows (page 1 → next, last page → prev).
+.testimonials .t-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  color: #04261d;
+  background: linear-gradient(135deg, #05fb8d, #03afad);
+  box-shadow: 0 12px 28px -10px rgba(5, 251, 141, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.testimonials .t-nav:hover {
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 16px 34px -10px rgba(5, 251, 141, 0.75);
+}
+.testimonials .t-nav--prev {
+  left: -10px;
+}
+.testimonials .t-nav--next {
+  right: -10px;
+}
+.testimonials .t-nav.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 @media (min-width: 768px) {
-  .testimonials .t-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .testimonials .t-nav {
+    width: 54px;
+    height: 54px;
+  }
+  .testimonials .t-nav--prev {
+    left: -18px;
+  }
+  .testimonials .t-nav--next {
+    right: -18px;
   }
 }
 .testimonials .t-card {
+  flex: 0 0 85%; // mobile: ~1 card per view with a peek of the next
+  scroll-snap-align: start;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -154,6 +211,16 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease,
     box-shadow 0.4s ease;
+}
+@media (min-width: 576px) {
+  .testimonials .t-card {
+    flex-basis: calc((100% - 1.75rem) / 2); // tablet: 2 per view
+  }
+}
+@media (min-width: 992px) {
+  .testimonials .t-card {
+    flex-basis: calc((100% - 3.5rem) / 3); // desktop: exactly 3 per view
+  }
 }
 .testimonials .t-card:hover {
   transform: translateY(-8px);
@@ -185,6 +252,10 @@
   color: #ffb400;
   font-size: 1.05rem;
   line-height: 1;
+}
+// Unearned star in a sub-5 rating: present for the count, muted so it reads empty.
+.testimonials .t-star--empty {
+  color: rgba(255, 255, 255, 0.22);
 }
 .testimonials .t-quote {
   margin: 0 0 1.6rem;
