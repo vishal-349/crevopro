@@ -127,3 +127,63 @@ export interface NavLink {
   /** When true, href is an app route (e.g. /portfolio) rather than an in-page anchor. */
   isRoute?: boolean;
 }
+
+/** One purchasable package shown on the pricing page. */
+export interface PricePackage {
+  id: string;
+  name: string;
+  /** Display figure, e.g. '₹4,999' — or 'Custom Quote' where there is no fixed rate. */
+  price: string;
+  /** Qualifier shown beside the figure, e.g. 'starting from' or '/ month'. */
+  unit?: string;
+  description?: string;
+  features: string[];
+  /** Named panels bundled with the package (e-commerce / app builds). */
+  panels?: { label: string; items: string[] };
+  note?: string;
+  /** Highlights the card and shows a "Recommended" badge. */
+  featured?: boolean;
+}
+
+/** One service/rate row inside a rate table. */
+export interface PriceSummaryItem {
+  label: string;
+  price: string;
+}
+
+/** A labelled rate table, mirroring the rate cards in the PDF deck. */
+export interface PriceTable {
+  label: string;
+  items: PriceSummaryItem[];
+  note?: string;
+}
+
+/** Side-by-side comparison of two packages within a group. */
+export interface PriceComparison {
+  heading: string;
+  columns: string[];
+  rows: { label: string; values: string[] }[];
+}
+
+export interface PriceGroup {
+  /** Anchor id used for in-page links. */
+  id: string;
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  packages?: PricePackage[];
+  /** Rate tables rendered side by side beneath any packages. */
+  tables?: PriceTable[];
+  comparison?: PriceComparison;
+  /** Terms list, shown as the closing block of its section. */
+  terms?: string[];
+}
+
+/** Homepage teaser card linking through to the pricing page. */
+export interface PriceTeaser {
+  id: string;
+  title: string;
+  price: string;
+  unit: string;
+  blurb: string;
+}

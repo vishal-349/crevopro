@@ -9,6 +9,7 @@ import HomePage from '@/features/home/HomePage';
 // content animations are loaded with their own chunks.)
 const ServiceDetailPage = lazy(() => import('@/features/services/ServiceDetailPage'));
 const PortfolioPage = lazy(() => import('@/features/portfolio/PortfolioPage'));
+const PricingPage = lazy(() => import('@/features/pricing/PricingPage'));
 const AdminApp = lazy(() => import('@/features/admin/AdminApp'));
 
 /** Reset scroll to top on navigation (unless a hash anchor is targeted). */
@@ -41,6 +42,14 @@ function RoutedApp() {
           element={
             <Suspense fallback={<Loader />}>
               <PortfolioPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/pricing"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PricingPage />
             </Suspense>
           }
         />
