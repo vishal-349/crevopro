@@ -204,6 +204,9 @@
 /* ---- Table ---- */
 .admin-table-wrap {
   overflow-x: auto;
+  // see note in pricing.scss: keep the vertical axis from becoming a scroller
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
   border: 1px solid $border-color;
   border-radius: $radius-md;
 }

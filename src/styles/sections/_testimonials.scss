@@ -143,8 +143,16 @@
   gap: 1.75rem;
   align-items: stretch;
   overflow-x: auto;
+  // `overflow-x: auto` alone would compute overflow-y to `auto` as well, making
+  // this track a *vertical* scroll container with a few px of slack — a wheel
+  // over a card then scrolled the track instead of the page, so page scrolling
+  // stalled here. Clipping is unchanged (`auto` clips at the padding box too).
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  // No `scroll-behavior: smooth` here: it turned every snap into an animation
+  // that had to finish before the gesture was released. Arrow paging still
+  // animates — useCarousel's slide() passes `behavior: 'smooth'` explicitly.
+  overscroll-behavior-x: contain;
   // vertical room so the card hover-lift isn't clipped by the scroll container
   padding: 14px 4px 18px;
   -ms-overflow-style: none;
