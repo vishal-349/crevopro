@@ -2,119 +2,111 @@ import type { ServiceDetail } from '@/types/content';
 
 /** Rich, per-service content powering the premium detail pages, keyed by slug. */
 export const serviceDetails: Record<string, ServiceDetail> = {
-  'brand-identity-creative': {
-    slug: 'brand-identity-creative',
-    title: 'Brand Identity & Creative',
-    eyebrow: 'Brand & Visual Identity',
-    tagline: 'Design that makes people stop scrolling.',
+  'web-design-development': {
+    slug: 'web-design-development',
+    title: 'Web Design & Development',
+    eyebrow: 'Web Design & Development',
+    tagline: 'Websites that look stunning and convert.',
     heroDescription:
-      'From a single logo to a complete brand system, we craft bold, cohesive visuals that make your brand impossible to ignore — and unmistakably yours.',
+      'Fast, responsive, conversion-focused websites — designed around your users and engineered to load instantly, rank well, and turn visitors into customers.',
     stats: [
-      { value: 600, suffix: '+', label: 'Designs delivered' },
-      { value: 120, suffix: '+', label: 'Brands shaped' },
-      { value: 48, suffix: 'h', label: 'Avg. first concept' },
-      { value: 98, suffix: '%', label: 'Client retention' },
+      { value: 90, suffix: '+', label: 'Lighthouse score' },
+      { value: 200, suffix: '+', label: 'Sites shipped' },
+      { value: 1.5, suffix: 's', label: 'Avg. load time' },
+      { value: 100, suffix: '%', label: 'Responsive' },
     ],
     whatWeDo: [
       {
-        title: 'Logo & Brand Identity',
-        description:
-          'Distinctive logos, colour systems, and typography that scale across every touchpoint.',
+        title: 'UI/UX Design',
+        description: 'Interfaces designed around real user journeys, not guesswork.',
       },
       {
-        title: 'Social Media Creatives',
-        description: 'Scroll-stopping post, story, and ad creatives designed for engagement.',
+        title: 'Responsive Development',
+        description: 'Flawless on mobile, tablet, laptop, and desktop — every time.',
       },
       {
-        title: 'Print & Packaging',
-        description: 'Brochures, packaging, and collateral with production-ready precision.',
+        title: 'Landing Pages',
+        description: 'High-converting pages purpose-built for campaigns and launches.',
       },
       {
-        title: 'Brand Guidelines',
-        description: 'A living system so every future asset stays perfectly on-brand.',
+        title: 'Performance & SEO',
+        description: 'Engineered for speed, accessibility, and search visibility.',
       },
     ],
     process: [
       {
-        title: 'Discover',
-        description: 'We dig into your market, audience, and competitors to find your visual edge.',
+        title: 'Plan',
+        description: 'Sitemap, goals, and content strategy mapped to your audience.',
       },
+      { title: 'Design', description: 'High-fidelity, on-brand mockups for every key screen.' },
+      { title: 'Build', description: 'Clean, modern, responsive code with performance baked in.' },
       {
-        title: 'Concept',
-        description:
-          'Multiple creative directions — not one safe option — so you can choose with confidence.',
-      },
-      {
-        title: 'Craft',
-        description: 'Pixel-level refinement of the chosen direction across all required formats.',
-      },
-      {
-        title: 'Deliver',
-        description: 'Organised, production-ready files plus a guideline system for the future.',
+        title: 'Launch & Care',
+        description: 'Smooth go-live plus ongoing support and improvements.',
       },
     ],
     benefits: [
       {
-        title: 'Instant recognition',
-        description: 'A consistent identity that audiences remember after a single glance.',
+        title: 'First impressions that win',
+        description: 'A polished site builds instant credibility with every visitor.',
       },
       {
-        title: 'Premium perception',
-        description: 'Considered design signals quality and builds immediate trust.',
+        title: 'More conversions',
+        description: 'Clear journeys and fast pages turn more visitors into customers.',
       },
       {
-        title: 'Faster marketing',
-        description: 'A ready system means every campaign ships quicker and on-brand.',
+        title: 'Found on Google',
+        description: 'Speed, structure, and SEO best practices baked in from day one.',
       },
       {
-        title: 'Built to scale',
-        description: 'Assets engineered to work from a favicon to a billboard.',
+        title: 'Easy to manage',
+        description: 'Built so your team can update content without a developer.',
       },
     ],
     highlights: [
-      { title: 'Gourmet Foods Rebrand', category: 'Brand Identity' },
-      { title: 'Ewaan Lifts Logo System', category: 'Logo Design' },
-      { title: 'Pretty Packaging Suite', category: 'Packaging' },
-      { title: 'Tech Connect Social Kit', category: 'Social Creatives' },
+      { title: 'Tech Connect Platform', category: 'Web App' },
+      { title: 'Ewaan Corporate Site', category: 'Website Design' },
+      { title: 'Care First Landing', category: 'Landing Page' },
+      { title: 'Oculus Product Site', category: 'UI/UX' },
     ],
     whyChooseUs: [
       {
-        title: 'Strategy-led',
-        description: 'Every visual decision ties back to a business goal, not just aesthetics.',
+        title: 'Design + engineering',
+        description: 'One team handles both, so nothing gets lost in handoff.',
       },
       {
-        title: 'Senior designers',
-        description: 'Your brand is handled by experienced designers, not juniors-in-training.',
+        title: 'Built to perform',
+        description: 'We obsess over load time, accessibility, and Core Web Vitals.',
       },
       {
-        title: 'Unlimited clarity',
-        description: 'Clear revision rounds with transparent timelines and no surprises.',
+        title: 'Future-proof stack',
+        description: 'Modern, maintainable code that is easy to grow with.',
       },
     ],
     faqs: [
       {
-        question: 'How long does a logo project take?',
+        question: 'How long does a website take?',
         answer:
-          'Most identity projects run 1–3 weeks depending on scope. You will see first concepts within 48 hours of kickoff.',
+          'Most marketing sites launch in 3–6 weeks depending on page count and complexity. We share a clear timeline up front.',
       },
       {
-        question: 'Do I get the source files?',
+        question: 'Can I edit the site myself?',
         answer:
-          'Yes — you receive full editable source files (AI/SVG/PDF) plus web and print exports, and you own them outright.',
+          'Yes — we build with editing in mind and hand over training so your team can update content easily.',
       },
       {
-        question: 'How many revisions are included?',
+        question: 'Is the site mobile-friendly?',
         answer:
-          'Every package includes structured revision rounds. We keep refining the chosen direction until it is right.',
+          'Always. Every site is mobile-first and tested across phones, tablets, and desktops before launch.',
       },
       {
-        question: 'Can you match my existing brand?',
+        question: 'Do you provide hosting and support?',
         answer:
-          'Absolutely. We can extend and elevate an existing identity or build a fresh one from scratch.',
+          'We deploy to fast, reliable hosting and offer ongoing care plans for updates and improvements.',
       },
     ],
-    ctaHeading: "Let's design something unforgettable.",
-    ctaText: 'Tell us about your brand and we will send back a concept that turns heads.',
+    ctaHeading: 'Your next website starts here.',
+    ctaText: 'Share your goals and we will propose a site that looks incredible and performs.',
   },
 
   'social-media-marketing': {
@@ -228,6 +220,121 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     ctaHeading: 'Ready to grow your social presence?',
     ctaText: 'Get a free social audit and a content plan tailored to your brand.',
+  },
+
+  'brand-identity-creative': {
+    slug: 'brand-identity-creative',
+    title: 'Brand Identity & Creative',
+    eyebrow: 'Brand & Visual Identity',
+    tagline: 'Design that makes people stop scrolling.',
+    heroDescription:
+      'From a single logo to a complete brand system, we craft bold, cohesive visuals that make your brand impossible to ignore — and unmistakably yours.',
+    stats: [
+      { value: 600, suffix: '+', label: 'Designs delivered' },
+      { value: 120, suffix: '+', label: 'Brands shaped' },
+      { value: 48, suffix: 'h', label: 'Avg. first concept' },
+      { value: 98, suffix: '%', label: 'Client retention' },
+    ],
+    whatWeDo: [
+      {
+        title: 'Logo & Brand Identity',
+        description:
+          'Distinctive logos, colour systems, and typography that scale across every touchpoint.',
+      },
+      {
+        title: 'Social Media Creatives',
+        description: 'Scroll-stopping post, story, and ad creatives designed for engagement.',
+      },
+      {
+        title: 'Print & Packaging',
+        description: 'Brochures, packaging, and collateral with production-ready precision.',
+      },
+      {
+        title: 'Brand Guidelines',
+        description: 'A living system so every future asset stays perfectly on-brand.',
+      },
+    ],
+    process: [
+      {
+        title: 'Discover',
+        description: 'We dig into your market, audience, and competitors to find your visual edge.',
+      },
+      {
+        title: 'Concept',
+        description:
+          'Multiple creative directions — not one safe option — so you can choose with confidence.',
+      },
+      {
+        title: 'Craft',
+        description: 'Pixel-level refinement of the chosen direction across all required formats.',
+      },
+      {
+        title: 'Deliver',
+        description: 'Organised, production-ready files plus a guideline system for the future.',
+      },
+    ],
+    benefits: [
+      {
+        title: 'Instant recognition',
+        description: 'A consistent identity that audiences remember after a single glance.',
+      },
+      {
+        title: 'Premium perception',
+        description: 'Considered design signals quality and builds immediate trust.',
+      },
+      {
+        title: 'Faster marketing',
+        description: 'A ready system means every campaign ships quicker and on-brand.',
+      },
+      {
+        title: 'Built to scale',
+        description: 'Assets engineered to work from a favicon to a billboard.',
+      },
+    ],
+    highlights: [
+      { title: 'Gourmet Foods Rebrand', category: 'Brand Identity' },
+      { title: 'Ewaan Lifts Logo System', category: 'Logo Design' },
+      { title: 'Pretty Packaging Suite', category: 'Packaging' },
+      { title: 'Tech Connect Social Kit', category: 'Social Creatives' },
+    ],
+    whyChooseUs: [
+      {
+        title: 'Strategy-led',
+        description: 'Every visual decision ties back to a business goal, not just aesthetics.',
+      },
+      {
+        title: 'Senior designers',
+        description: 'Your brand is handled by experienced designers, not juniors-in-training.',
+      },
+      {
+        title: 'Unlimited clarity',
+        description: 'Clear revision rounds with transparent timelines and no surprises.',
+      },
+    ],
+    faqs: [
+      {
+        question: 'How long does a logo project take?',
+        answer:
+          'Most identity projects run 1–3 weeks depending on scope. You will see first concepts within 48 hours of kickoff.',
+      },
+      {
+        question: 'Do I get the source files?',
+        answer:
+          'Yes — you receive full editable source files (AI/SVG/PDF) plus web and print exports, and you own them outright.',
+      },
+      {
+        question: 'How many revisions are included?',
+        answer:
+          'Every package includes structured revision rounds. We keep refining the chosen direction until it is right.',
+      },
+      {
+        question: 'Can you match my existing brand?',
+        answer:
+          'Absolutely. We can extend and elevate an existing identity or build a fresh one from scratch.',
+      },
+    ],
+    ctaHeading: "Let's design something unforgettable.",
+    ctaText: 'Tell us about your brand and we will send back a concept that turns heads.',
   },
 
   'performance-marketing': {
@@ -577,113 +684,6 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     ctaHeading: 'Put your brand on the biggest screens in the city.',
     ctaText: 'Tell us your target locations and budget — we will build a high-impact LED plan.',
-  },
-
-  'web-design-development': {
-    slug: 'web-design-development',
-    title: 'Web Design & Development',
-    eyebrow: 'Web Design & Development',
-    tagline: 'Websites that look stunning and convert.',
-    heroDescription:
-      'Fast, responsive, conversion-focused websites — designed around your users and engineered to load instantly, rank well, and turn visitors into customers.',
-    stats: [
-      { value: 90, suffix: '+', label: 'Lighthouse score' },
-      { value: 200, suffix: '+', label: 'Sites shipped' },
-      { value: 1.5, suffix: 's', label: 'Avg. load time' },
-      { value: 100, suffix: '%', label: 'Responsive' },
-    ],
-    whatWeDo: [
-      {
-        title: 'UI/UX Design',
-        description: 'Interfaces designed around real user journeys, not guesswork.',
-      },
-      {
-        title: 'Responsive Development',
-        description: 'Flawless on mobile, tablet, laptop, and desktop — every time.',
-      },
-      {
-        title: 'Landing Pages',
-        description: 'High-converting pages purpose-built for campaigns and launches.',
-      },
-      {
-        title: 'Performance & SEO',
-        description: 'Engineered for speed, accessibility, and search visibility.',
-      },
-    ],
-    process: [
-      {
-        title: 'Plan',
-        description: 'Sitemap, goals, and content strategy mapped to your audience.',
-      },
-      { title: 'Design', description: 'High-fidelity, on-brand mockups for every key screen.' },
-      { title: 'Build', description: 'Clean, modern, responsive code with performance baked in.' },
-      {
-        title: 'Launch & Care',
-        description: 'Smooth go-live plus ongoing support and improvements.',
-      },
-    ],
-    benefits: [
-      {
-        title: 'First impressions that win',
-        description: 'A polished site builds instant credibility with every visitor.',
-      },
-      {
-        title: 'More conversions',
-        description: 'Clear journeys and fast pages turn more visitors into customers.',
-      },
-      {
-        title: 'Found on Google',
-        description: 'Speed, structure, and SEO best practices baked in from day one.',
-      },
-      {
-        title: 'Easy to manage',
-        description: 'Built so your team can update content without a developer.',
-      },
-    ],
-    highlights: [
-      { title: 'Tech Connect Platform', category: 'Web App' },
-      { title: 'Ewaan Corporate Site', category: 'Website Design' },
-      { title: 'Care First Landing', category: 'Landing Page' },
-      { title: 'Oculus Product Site', category: 'UI/UX' },
-    ],
-    whyChooseUs: [
-      {
-        title: 'Design + engineering',
-        description: 'One team handles both, so nothing gets lost in handoff.',
-      },
-      {
-        title: 'Built to perform',
-        description: 'We obsess over load time, accessibility, and Core Web Vitals.',
-      },
-      {
-        title: 'Future-proof stack',
-        description: 'Modern, maintainable code that is easy to grow with.',
-      },
-    ],
-    faqs: [
-      {
-        question: 'How long does a website take?',
-        answer:
-          'Most marketing sites launch in 3–6 weeks depending on page count and complexity. We share a clear timeline up front.',
-      },
-      {
-        question: 'Can I edit the site myself?',
-        answer:
-          'Yes — we build with editing in mind and hand over training so your team can update content easily.',
-      },
-      {
-        question: 'Is the site mobile-friendly?',
-        answer:
-          'Always. Every site is mobile-first and tested across phones, tablets, and desktops before launch.',
-      },
-      {
-        question: 'Do you provide hosting and support?',
-        answer:
-          'We deploy to fast, reliable hosting and offer ongoing care plans for updates and improvements.',
-      },
-    ],
-    ctaHeading: 'Your next website starts here.',
-    ctaText: 'Share your goals and we will propose a site that looks incredible and performs.',
   },
 };
 

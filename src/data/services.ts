@@ -1,21 +1,21 @@
 import type { Service } from '@/types/content';
 
-import brandIdentityIcon from '@/assets/graphic-design.svg';
+import webIcon from '@/assets/websiteDesign.svg';
 import socialMediaIcon from '@/assets/digitalMarketing.svg';
+import brandIdentityIcon from '@/assets/graphic-design.svg';
 import performanceIcon from '@/assets/performanceMarketing.svg';
 import brandShootIcon from '@/assets/brandShoot.svg';
 import signageIcon from '@/assets/outdoorAdvertising.svg';
-import webIcon from '@/assets/websiteDesign.svg';
 
 export const services: Service[] = [
   {
     id: 1,
-    slug: 'brand-identity-creative',
-    icon: brandIdentityIcon,
-    title: 'Brand Identity & Creative',
+    slug: 'web-design-development',
+    icon: webIcon,
+    title: 'Web Design & Development',
     description:
-      'Logos, brand identity, and scroll-stopping creatives that make your brand instantly recognisable and impossible to ignore.',
-    accent: { from: '#FF6FD8', to: '#A78BFA' },
+      'Fast, responsive, conversion-focused websites — designed around your users and engineered to rank well and sell.',
+    accent: { from: '#3DA8FF', to: '#5EEAD4' },
   },
   {
     id: 2,
@@ -28,12 +28,12 @@ export const services: Service[] = [
   },
   {
     id: 3,
-    slug: 'web-design-development',
-    icon: webIcon,
-    title: 'Web Design & Development',
+    slug: 'brand-identity-creative',
+    icon: brandIdentityIcon,
+    title: 'Brand Identity & Creative',
     description:
-      'Fast, responsive, conversion-focused websites — designed around your users and engineered to rank well and sell.',
-    accent: { from: '#3DA8FF', to: '#5EEAD4' },
+      'Logos, brand identity, and scroll-stopping creatives that make your brand instantly recognisable and impossible to ignore.',
+    accent: { from: '#FF6FD8', to: '#A78BFA' },
   },
   {
     id: 4,
