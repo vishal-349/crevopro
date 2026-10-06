@@ -132,7 +132,8 @@ export interface NavLink {
 export interface PricePackage {
   id: string;
   name: string;
-  /** Display figure, e.g. '₹4,999' — or 'Custom Quote' where there is no fixed rate. */
+  /** Display figure, e.g. '₹4,999' — or 'Custom Quote' where there is no fixed rate. Only the
+   *  starting figure per category is published; see startingPriceSets in data/pricing. */
   price: string;
   /** Qualifier shown beside the figure, e.g. 'starting from' or '/ month'. */
   unit?: string;

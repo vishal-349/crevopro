@@ -7,7 +7,12 @@ import type { PriceGroup, PriceTeaser } from '@/types/content';
  * add-on, stationery and per-item design rate tables stay in the PDF and are
  * shared on request. Keep the two in sync when either changes.
  *
- * NOT YET APPROVED — confirm before this goes live:
+ * Only one starting (lowest) price is published per category — Development,
+ * Digital Marketing, Graphic Design (see startingPriceSets); every other figure
+ * renders as CUSTOM_PRICE. Stationery publishes all its rates. The full figures
+ * stay here as the internal rate card.
+ *
+ * NOT YET APPROVED — confirm before these are ever published:
  *   Business Website        ₹12,999
  *   Dynamic Website + CMS   ₹19,999
  *   Mobile App Development  ₹79,999
@@ -23,7 +28,7 @@ export const pricingTerms = [
   'A final quotation is shared after understanding the complete project requirements.',
 ];
 
-export const pricingGroups: PriceGroup[] = [
+const rateCard: PriceGroup[] = [
   {
     id: 'website',
     eyebrow: 'Website Development',
@@ -147,7 +152,7 @@ export const pricingGroups: PriceGroup[] = [
     ],
     comparison: {
       heading: 'Which one fits you',
-      columns: ['Shopify — ₹29,999', 'Full-Stack — ₹49,999'],
+      columns: ['Shopify', 'Full-Stack'],
       rows: [
         { label: 'Monthly platform fee', values: ['Yes — paid to Shopify', 'None'] },
         { label: 'Code ownership', values: ['Platform-hosted', 'Fully owned by you'] },
@@ -340,7 +345,7 @@ export const pricingGroups: PriceGroup[] = [
           { label: 'Documentary Editing — Up to 5 Min', price: '₹5,000' },
           { label: 'Additional Documentary Duration', price: '₹1,000 / Min' },
         ],
-        note: 'Documentary editing carries a ₹5,000 minimum charge even if the final video runs under 5 minutes — 6 min ₹6,000, 7 min ₹7,000, 8 min ₹8,000.',
+        note: 'Documentary editing carries a minimum charge even if the final video runs under 5 minutes, with longer videos billed per additional minute.',
       },
     ],
   },
@@ -414,10 +419,61 @@ function parsePrice(price: string, unit?: string): { amount: number; suffix: str
   return { amount, suffix: fromPrice ?? fromUnit ?? '' };
 }
 
+/** Shown in place of every figure except a block's starting price. */
+export const CUSTOM_PRICE = 'Custom pricing';
+export const CUSTOM_PRICE_UNIT = 'contact us for a tailored quote';
+
+/**
+ * Groups that share one published starting price: within each set only the
+ * lowest figure (across every package and rate-table row) is shown, and every
+ * other entry shows CUSTOM_PRICE. Groups not listed here (stationery) publish
+ * every figure as-is.
+ */
+const startingPriceSets: string[][] = [
+  ['website', 'ecommerce', 'apps'],
+  ['marketing'],
+  ['graphic-design', 'brand-identity'],
+];
+
+function publishStartingPriceOnly(groups: PriceGroup[]): PriceGroup[] {
+  return startingPriceSets.reduce((result, ids) => {
+    const starting = lowestRate(ids, groups);
+    let shown = false;
+    // True only for the first entry at the starting figure (one per set, even on a tie).
+    const isStarting = (price: string, unit?: string) => {
+      if (shown || !starting || parsePrice(price, unit)?.amount !== starting.amount) return false;
+      shown = true;
+      return true;
+    };
+
+    return result.map((group) =>
+      ids.includes(group.id)
+        ? {
+            ...group,
+            packages: group.packages?.map((pkg) =>
+              isStarting(pkg.price, pkg.unit)
+                ? pkg
+                : { ...pkg, price: CUSTOM_PRICE, unit: CUSTOM_PRICE_UNIT },
+            ),
+            tables: group.tables?.map((table) => ({
+              ...table,
+              items: table.items.map((item) =>
+                isStarting(item.price) ? item : { ...item, price: CUSTOM_PRICE },
+              ),
+            })),
+          }
+        : group,
+    );
+  }, groups);
+}
+
 /** Lowest published rate across a set of groups. Entries without a figure
  *  (e.g. 'Custom Quote') are skipped. */
-function lowestRate(groupIds: string[]): { amount: number; suffix: string } | null {
-  const priced = pricingGroups
+function lowestRate(
+  groupIds: string[],
+  groups: PriceGroup[] = pricingGroups,
+): { amount: number; suffix: string } | null {
+  const priced = groups
     .filter((group) => groupIds.includes(group.id))
     .flatMap((group) => [
       ...(group.packages ?? []).map((pkg) => parsePrice(pkg.price, pkg.unit)),
@@ -430,6 +486,9 @@ function lowestRate(groupIds: string[]): { amount: number; suffix: string } | nu
     null,
   );
 }
+
+/** What the site renders — the rate card with only starting prices published. */
+export const pricingGroups: PriceGroup[] = publishStartingPriceOnly(rateCard);
 
 const inr = new Intl.NumberFormat('en-IN');
 
